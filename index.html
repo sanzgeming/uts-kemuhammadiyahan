@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masjid Ar-Royyan Muhammadiyah Buduran Sidoarjo</title>
+    <meta name="description"
+        content="Website Resmi Masjid Ar-Royyan Muhammadiyah Buduran Sidoarjo. Pusat ibadah, dakwah Islam berkemajuan, kajian rutin, dan pembinaan komunitas jamaah.">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo & Nama Masjid -->
+                <a href="#hero" class="flex items-center space-x-3 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-brand-700 flex items-center justify-center text-white shadow-md shadow-brand-700/20 group-hover:bg-brand-800 transition">
+                        <i class="fa-solid fa-mosque text-2xl"></i>
+                    </div>
+                    <div>
+                        <span
+                            class="block text-lg font-bold tracking-tight text-slate-900 group-hover:text-brand-700 transition">
+                            Ar-Royyan
+                        </span>
+                        <span class="block text-xs font-medium text-brand-700 uppercase tracking-wider">
+                            Muhammadiyah Buduran
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu Navigasi -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#profil"
+                        class="text-sm font-medium text-slate-600 hover:text-brand-700 transition">Profil</a>
+                    <a href="#jadwal" class="text-sm font-medium text-slate-600 hover:text-brand-700 transition">Jadwal
+                        & Agenda</a>
+                    <a href="#layanan"
+                        class="text-sm font-medium text-slate-600 hover:text-brand-700 transition">Layanan & Kontak</a>
+                    <a href="#lokasi"
+                        class="text-sm font-medium text-slate-600 hover:text-brand-700 transition">Lokasi</a>
+                    <a href="https://wa.me/6281234567890?text=Assalamu'alaikum%20Pengurus%20Masjid%20Ar-Royyan"
+                        target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-brand-700 hover:bg-brand-800 rounded-lg shadow-sm transition">
+                        <i class="fa-brands fa-whatsapp mr-2 text-base"></i> Hubungi Takmir
+                    </a>
+                </nav>
+
+                <!-- Tombol Menu Mobile -->
+                <button id="mobile-menu-btn" type="button"
+                    class="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
+                    aria-label="Toggle Menu">
+                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Dropdown Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-3">
+            <a href="#profil"
+                class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700">Profil
+                Singkat</a>
+            <a href="#jadwal"
+                class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700">Jadwal
+                Ibadah & Agenda</a>
+            <a href="#layanan"
+                class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700">Layanan
+                & Pengurus</a>
+            <a href="#lokasi"
+                class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700">Peta
+                Lokasi</a>
+            <a href="https://wa.me/6281234567890?text=Assalamu'alaikum%20Pengurus%20Masjid%20Ar-Royyan" target="_blank"
+                rel="noopener noreferrer"
+                class="mobile-nav-link flex items-center justify-center w-full px-4 py-2.5 text-base font-medium text-white bg-brand-700 rounded-lg shadow-sm">
+                <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> Hubungi via WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- ================= HERO SECTION ================= -->
+        <section id="hero"
+            class="relative bg-gradient-to-b from-brand-900 via-brand-800 to-brand-900 text-white overflow-hidden py-16 sm:py-24">
+            <!-- Ornamen Dekoratif Halus -->
+            <div
+                class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none">
+            </div>
+
+            <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+                    <!-- Teks Sambutan & Waktu -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-700/60 border border-brand-500/30 text-xs sm:text-sm text-brand-100">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Pusat Ibadah Warga & Musafir
+                        </div>
+
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                            Masjid Ar-Royyan <br>
+                            <span class="text-emerald-300">Muhammadiyah Buduran</span>
+                        </h1>
+
+                        <p
+                            class="text-base sm:text-lg text-emerald-100/90 max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
+                            Mewujudkan masjid yang makmur, ramah keluarga, serta menjadi wahana dakwah pencerahan dan
+                            pembinaan ukhuwah Islamiyah di Kabupaten Sidoarjo.
+                        </p>
+
+                        <!-- Card Jam Digital Realtime Sidoarjo -->
+                        <div
+                            class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/15 max-w-md mx-auto lg:mx-0 shadow-lg text-left">
+                            <div
+                                class="flex items-center justify-between text-xs sm:text-sm text-emerald-200 border-b border-white/10 pb-2 mb-2">
+                                <span class="flex items-center"><i class="fa-regular fa-clock mr-2"></i> Waktu Indonesia
+                                    Barat</span>
+                                <span id="current-date" class="font-medium">Memuat tanggal...</span>
+                            </div>
+                            <div class="flex items-baseline justify-between">
+                                <div>
+                                    <span id="current-clock"
+                                        class="text-3xl sm:text-4xl font-mono font-bold tracking-wider text-white">00:00:00</span>
+                                    <span class="text-xs text-emerald-200 ml-1">WIB</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs block text-emerald-200">Wilayah</span>
+                                    <span class="text-sm font-semibold text-white">Siwalanpanji, Buduran, Sidoarjo</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tombol Navigasi Cepat -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#jadwal"
+                                class="px-6 py-3 rounded-xl bg-white text-brand-900 font-semibold hover:bg-emerald-50 transition shadow-md">
+                                <i class="fa-solid fa-calendar-check mr-2 text-brand-700"></i> Lihat Jadwal & Agenda
+                            </a>
+                            <a href="#profil"
+                                class="px-6 py-3 rounded-xl border border-white/40 text-white font-medium hover:bg-white/10 transition">
+                                Profil Singkat
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Gambar Masjid Hero -->
+                    <div class="lg:col-span-5">
+                        <div
+                            class="relative mx-auto max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 bg-brand-800">
+                            <img src="images/ar-royyan.webp" alt="Masjid Ar-Royyan Muhammadiyah Buduran Sidoarjo"
+                                class="w-full h-80 sm:h-96 object-cover hover:scale-105 transition duration-500"
+                                onerror="this.onerror=null; this.src='https://placehold.co/600x600/065f46/ffffff?text=Masjid+Ar-Royyan+Buduran';">
+                            <div
+                                class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-white">
+                                <p class="text-sm font-semibold">Tampak Depan Masjid Ar-Royyan</p>
+                                <p class="text-xs text-slate-300">Buduran, Kab. Sidoarjo, Jawa Timur</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 1. PROFIL RINGKAS ================= -->
+        <section id="profil" class="py-16 sm:py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span
+                        class="text-sm font-semibold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full">
+                        Tentang Kami
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-3">
+                        Profil Singkat Masjid Ar-Royyan
+                    </h2>
+                    <div class="w-16 h-1 bg-brand-600 mx-auto mt-3 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                    <!-- Deskripsi & Visi -->
+                    <div class="space-y-5 text-slate-600 text-base leading-relaxed">
+                        <h3 class="text-xl font-bold text-slate-900">
+                            Pusat Ibadah & Pembinaan Umat di Buduran
+                        </h3>
+                        <p>
+                            <strong>Masjid Ar-Royyan Muhammadiyah Buduran</strong> didirikan sebagai ikhtiar bersama
+                            warga dan persyarikatan Muhammadiyah untuk menghadirkan sarana ibadah yang nyaman, tertib,
+                            dan inklusif bagi masyarakat sekitar Buduran, Sidoarjo.
+                        </p>
+                        <p>
+                            Berlandaskan semangat Islam berkemajuan, masjid ini tidak hanya difungsikan untuk
+                            pelaksanaan shalat fardhu berjamaah, namun juga menjadi sentra pengajian pemahaman Al-Qur'an
+                            dan Sunnah, pendidikan anak-anak melalui TPQ, serta kegiatan sosial kemasyarakatan.
+                        </p>
+
+                        <div class="bg-slate-50 border-l-4 border-brand-600 p-4 rounded-r-xl">
+                            <h4 class="text-sm font-semibold text-slate-900 uppercase tracking-wide">Visi Utama</h4>
+                            <p class="text-sm text-slate-700 italic mt-1">
+                                "Terwujudnya jamaah yang bertauhid murni, berakhlak mulia, cerdas, dan saling
+                                tolong-menolong dalam bingkai ukhuwah Islamiyah."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Fasilitas Masjid -->
+                    <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100 shadow-sm">
+                        <h3 class="text-lg font-bold text-slate-900 mb-6 flex items-center">
+                            <i class="fa-solid fa-building-columns text-brand-700 mr-2.5"></i> Fasilitas Masjid
+                        </h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                            <div
+                                class="flex items-start space-x-3 p-3 bg-white rounded-xl shadow-xs border border-slate-100">
+                                <div class="p-2.5 bg-brand-50 text-brand-700 rounded-lg">
+                                    <i class="fa-solid fa-snowflake text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-slate-800">Ruang Utama Shalat</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Sejuk ber-AC dan karpet bersih.</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex items-start space-x-3 p-3 bg-white rounded-xl shadow-xs border border-slate-100">
+                                <div class="p-2.5 bg-brand-50 text-brand-700 rounded-lg">
+                                    <i class="fa-solid fa-faucet-drip text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-slate-800">Tempat Wudhu & Toilet</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Terpisah antara ikhwan & akhwat.</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex items-start space-x-3 p-3 bg-white rounded-xl shadow-xs border border-slate-100">
+                                <div class="p-2.5 bg-brand-50 text-brand-700 rounded-lg">
+                                    <i class="fa-solid fa-book-quran text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-slate-800">Ruang TPQ & Kajian</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Tempat belajar santri TPQ.</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex items-start space-x-3 p-3 bg-white rounded-xl shadow-xs border border-slate-100">
+                                <div class="p-2.5 bg-brand-50 text-brand-700 rounded-lg">
+                                    <i class="fa-solid fa-square-parking text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-slate-800">Parkir Kendaraan</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Aman untuk kendaraan roda dua & roda empat.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= 2. JADWAL IBADAH & AGENDA ================= -->
+        <section id="jadwal" class="py-16 sm:py-20 bg-slate-50 border-y border-slate-200/60">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span
+                        class="text-sm font-semibold uppercase tracking-wider text-brand-700 bg-brand-100/60 px-3 py-1 rounded-full">
+                        Informasi Terpusat
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-3">
+                        Jadwal Ibadah & Agenda Kegiatan
+                    </h2>
+                    <div class="w-16 h-1 bg-brand-600 mx-auto mt-3 rounded-full"></div>
+                </div>
+
+                <!-- WIDGET WAKTU SHOLAT EKSKLUSIF (Tema Hijau Ar-Royyan) -->
+                <div
+                    class="relative bg-gradient-to-b from-[#063b2c] via-[#052e22] to-[#04241b] text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-emerald-900/60 overflow-hidden mb-14">
+                    <!-- Dekorasi Pola Lengkungan Halus -->
+                    <div
+                        class="absolute inset-0 opacity-10 bg-[radial-gradient(#34d399_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none">
+                    </div>
+                    <div
+                        class="absolute -top-24 -left-24 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none">
+                    </div>
+                    <div
+                        class="absolute -bottom-24 -right-24 w-72 h-72 bg-teal-400/10 rounded-full blur-3xl pointer-events-none">
+                    </div>
+
+                    <div class="relative z-10 text-center space-y-4">
+
+                        <!-- Judul Widget + Garis Aksen Emas-Emerald -->
+                        <div>
+                            <h3
+                                class="text-xl sm:text-2xl md:text-3xl font-serif font-semibold tracking-wide text-white">
+                                Waktu Shalat Wilayah Buduran, Sidoarjo
+                            </h3>
+                            <div
+                                class="w-20 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent mx-auto mt-2.5">
+                            </div>
+                        </div>
+
+                        <!-- Tag Lokasi -->
+                        <div
+                            class="inline-flex items-center text-xs sm:text-sm text-emerald-200/90 font-medium tracking-wide">
+                            <i class="fa-solid fa-location-dot mr-1.5 text-emerald-400"></i> Buduran, Sidoarjo (Kemenag
+                            RI)
+                        </div>
+
+                        <!-- Kapsul Hitung Mundur Sholat Selanjutnya (Realtime Countdown) -->
+                        <div class="py-2">
+                            <div
+                                class="inline-flex flex-col items-center justify-center px-7 py-2.5 rounded-full bg-white/[0.07] border border-white/20 backdrop-blur-md shadow-inner">
+                                <span id="countdown-label"
+                                    class="text-[10px] sm:text-xs font-semibold tracking-widest text-emerald-300 uppercase">
+                                    MEMUAT JADWAL...
+                                </span>
+                                <span id="countdown-timer"
+                                    class="text-2xl sm:text-3xl font-mono font-bold tracking-wider text-white drop-shadow-sm mt-0.5">
+                                    --:--:--
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Tanggal Masehi & Penanggalan Hijriah -->
+                        <div class="text-xs sm:text-sm text-emerald-200/80 space-y-0.5 pb-3">
+                            <div id="masehi-date" class="font-light text-slate-200">Memuat tanggal...</div>
+                            <div id="hijri-date" class="font-medium text-emerald-300 tracking-wide">Memuat kalender
+                                Hijriah...</div>
+                        </div>
+
+                        <!-- 5 Kartu Sholat Fardhu Horizontal (Subuh, Dzuhur, Ashar, Maghrib, Isya) -->
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 max-w-4xl mx-auto pt-2">
+
+                            <!-- SUBUH -->
+                            <div id="card-subuh"
+                                class="prayer-card group rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center transition-all duration-300 cursor-default bg-emerald-950/40 border border-emerald-700/30 backdrop-blur-sm shadow-sm">
+                                <div class="prayer-icon text-xl sm:text-2xl mb-2 text-emerald-300/80">
+                                    <i class="fa-solid fa-cloud-moon"></i>
+                                </div>
+                                <span
+                                    class="prayer-name text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-emerald-200/80">SUBUH</span>
+                                <span id="time-subuh"
+                                    class="prayer-time text-lg sm:text-2xl font-bold tracking-tight text-white mt-1">--:--</span>
+                            </div>
+
+                            <!-- DZUHUR -->
+                            <div id="card-dzuhur"
+                                class="prayer-card group rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center transition-all duration-300 cursor-default bg-emerald-950/40 border border-emerald-700/30 backdrop-blur-sm shadow-sm">
+                                <div class="prayer-icon text-xl sm:text-2xl mb-2 text-emerald-300/80">
+                                    <i class="fa-solid fa-sun"></i>
+                                </div>
+                                <span
+                                    class="prayer-name text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-emerald-200/80">DZUHUR</span>
+                                <span id="time-dzuhur"
+                                    class="prayer-time text-lg sm:text-2xl font-bold tracking-tight text-white mt-1">--:--</span>
+                            </div>
+
+                            <!-- ASHAR -->
+                            <div id="card-ashar"
+                                class="prayer-card group rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center transition-all duration-300 cursor-default bg-emerald-950/40 border border-emerald-700/30 backdrop-blur-sm shadow-sm">
+                                <div class="prayer-icon text-xl sm:text-2xl mb-2 text-emerald-300/80">
+                                    <i class="fa-solid fa-cloud-sun"></i>
+                                </div>
+                                <span
+                                    class="prayer-name text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-emerald-200/80">ASHAR</span>
+                                <span id="time-ashar"
+                                    class="prayer-time text-lg sm:text-2xl font-bold tracking-tight text-white mt-1">--:--</span>
+                            </div>
+
+                            <!-- MAGHRIB -->
+                            <div id="card-maghrib"
+                                class="prayer-card group rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center transition-all duration-300 cursor-default bg-emerald-950/40 border border-emerald-700/30 backdrop-blur-sm shadow-sm">
+                                <div class="prayer-icon text-xl sm:text-2xl mb-2 text-emerald-300/80">
+                                    <i class="fa-solid fa-moon"></i>
+                                </div>
+                                <span
+                                    class="prayer-name text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-emerald-200/80">MAGHRIB</span>
+                                <span id="time-maghrib"
+                                    class="prayer-time text-lg sm:text-2xl font-bold tracking-tight text-white mt-1">--:--</span>
+                            </div>
+
+                            <!-- ISYA -->
+                            <div id="card-isya"
+                                class="prayer-card group col-span-2 sm:col-span-1 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center transition-all duration-300 cursor-default bg-emerald-950/40 border border-emerald-700/30 backdrop-blur-sm shadow-sm">
+                                <div class="prayer-icon text-xl sm:text-2xl mb-2 text-emerald-300/80">
+                                    <i class="fa-solid fa-star-and-crescent"></i>
+                                </div>
+                                <span
+                                    class="prayer-name text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-emerald-200/80">ISYA</span>
+                                <span id="time-isya"
+                                    class="prayer-time text-lg sm:text-2xl font-bold tracking-tight text-white mt-1">--:--</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Agenda Kegiatan & Kajian Rutin -->
+                <div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-5 flex items-center">
+                        <i class="fa-solid fa-calendar-days text-brand-700 mr-2"></i> Agenda & Kajian Rutin Komunitas
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                        <!-- Agenda 1 -->
+                        <div
+                            class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                            <div>
+                                <div class="flex items-center justify-between text-xs font-medium text-brand-700 mb-3">
+                                    <span class="bg-brand-50 px-2.5 py-1 rounded-md">Setiap Ahad</span>
+                                    <span>Ba'da Shubuh - Selesai</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-slate-900 mb-2">Kajian Ahad Pagi</h4>
+                                <p class="text-sm text-slate-600 mb-4">
+                                    Kajian tematik tafsir Al-Qur'an dan akhlak bersama asatidz Muhammadiyah Sidoarjo.
+                                    Terbuka untuk umum.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-slate-100 flex items-center text-xs text-slate-500">
+                                <i class="fa-solid fa-users mr-1.5 text-brand-600"></i> Jamaah Umum & Sarapan Bersama
+                            </div>
+                        </div>
+
+                        <!-- Agenda 2 -->
+                        <div
+                            class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                            <div>
+                                <div
+                                    class="flex items-center justify-between text-xs font-medium text-emerald-800 mb-3">
+                                    <span class="bg-emerald-50 px-2.5 py-1 rounded-md">Senin s/d Kamis</span>
+                                    <span>16.00 - 17.30 WIB</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-slate-900 mb-2">TPQ Ar-Royyan</h4>
+                                <p class="text-sm text-slate-600 mb-4">
+                                    Pembelajaran baca tulis Al-Qur'an (metode Tajdid), hafalan doa harian, dan
+                                    dasar-dasar adab Islam untuk anak-anak.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-slate-100 flex items-center text-xs text-slate-500">
+                                <i class="fa-solid fa-child-reaching mr-1.5 text-brand-600"></i> Santri Usia SD & Remaja
+                            </div>
+                        </div>
+
+                        <!-- Agenda 3 -->
+                        <div
+                            class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                            <div>
+                                <div class="flex items-center justify-between text-xs font-medium text-teal-800 mb-3">
+                                    <span class="bg-teal-50 px-2.5 py-1 rounded-md">Jumat Pekan ke-2 & 4</span>
+                                    <span>15.30 WIB - Selesai</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-slate-900 mb-2">Pengajian Ibu-Ibu 'Aisyiyah</h4>
+                                <p class="text-sm text-slate-600 mb-4">
+                                    Forum silaturahmi, kajian fiqih keluarga sakinah, dan pembinaan ketahanan keluarga
+                                    di lingkungan cabang.
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-slate-100 flex items-center text-xs text-slate-500">
+                                <i class="fa-solid fa-female mr-1.5 text-brand-600"></i> Ibu-Ibu Jamaah & Warga
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= 3. LAYANAN & KONTEN INTERAKTIF ================= -->
+        <section id="layanan" class="py-16 sm:py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span
+                        class="text-sm font-semibold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full">
+                        Layanan & Interaksi
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-3">
+                        Kontak Pengurus, Peta & Media Sosial
+                    </h2>
+                    <div class="w-16 h-1 bg-brand-600 mx-auto mt-3 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+                    <!-- Kontak Pengurus & Media Sosial -->
+                    <div class="lg:col-span-5 space-y-6">
+
+                        <!-- Kartu WhatsApp Pengurus -->
+                        <div
+                            class="bg-gradient-to-br from-emerald-50 to-teal-50/50 p-6 rounded-2xl border border-emerald-100 shadow-xs">
+                            <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center">
+                                <i class="fa-solid fa-headset text-brand-700 mr-2.5"></i> Kontak Layanan Takmir
+                            </h3>
+                            <p class="text-sm text-slate-600 mb-5 leading-relaxed">
+                                Butuh informasi jadwal kajian, pendaftaran santri TPQ, atau kegiatan komunitas jamaah?
+                                Silakan hubungi nomor narahubung resmi berikut:
+                            </p>
+
+                            <div class="space-y-3">
+                                <a href="https://wa.me/6281234567890?text=Assalamu'alaikum%20Takmir%20Masjid%20Ar-Royyan,%20saya%20ingin%20bertanya%20informasi%20masjid"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="flex items-center justify-between p-3.5 bg-white rounded-xl border border-emerald-200/70 hover:border-emerald-500 hover:shadow-sm transition group">
+                                    <div class="flex items-center space-x-3">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition">
+                                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <span class="text-xs text-slate-400 block">Sekretariat / Takmir</span>
+                                            <span class="text-sm font-semibold text-slate-800">Ustadz Ahmad Fauzi</span>
+                                        </div>
+                                    </div>
+                                    <i
+                                        class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-emerald-600 transition"></i>
+                                </a>
+
+                                <a href="https://wa.me/6281987654321?text=Assalamu'alaikum%20Pengurus%20TPQ%20Ar-Royyan"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="flex items-center justify-between p-3.5 bg-white rounded-xl border border-emerald-200/70 hover:border-emerald-500 hover:shadow-sm transition group">
+                                    <div class="flex items-center space-x-3">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition">
+                                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <span class="text-xs text-slate-400 block">Pendaftaran TPQ & Remaja</span>
+                                            <span class="text-sm font-semibold text-slate-800">Pengurus TPQ
+                                                Ar-Royyan</span>
+                                        </div>
+                                    </div>
+                                    <i
+                                        class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-emerald-600 transition"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Tautan Media Sosial Resmi -->
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
+                            <h3 class="text-base font-bold text-slate-900 mb-3">Media Sosial Resmi</h3>
+                            <p class="text-xs text-slate-500 mb-4">Ikuti dokumentasi kajian dan pengumuman terbaru di
+                                platform kami:</p>
+
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center px-3.5 py-2 rounded-lg bg-pink-50 text-pink-700 hover:bg-pink-100 text-xs font-semibold transition">
+                                    <i class="fa-brands fa-instagram mr-2 text-base"></i> @arroyyan.buduran
+                                </a>
+                                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center px-3.5 py-2 rounded-lg bg-red-50 text-red-700 hover:bg-red-100 text-xs font-semibold transition">
+                                    <i class="fa-brands fa-youtube mr-2 text-base"></i> Masjid Ar-Royyan TV
+                                </a>
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center px-3.5 py-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-semibold transition">
+                                    <i class="fa-brands fa-facebook mr-2 text-base"></i> Ar-Royyan Buduran
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Embed Google Maps Buduran Sidoarjo -->
+                    <div id="lokasi"
+                        class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 flex items-center">
+                                    <i class="fa-solid fa-location-dot text-brand-700 mr-2"></i> Lokasi Masjid
+                                </h3>
+                                <p class="text-xs text-slate-500 mt-0.5">Kecamatan Buduran, Kabupaten Sidoarjo, Jawa
+                                    Timur</p>
+                            </div>
+                            <a href="https://www.google.com/maps/place/Masjid+Muhammadiyah+Ar-Royyan+Buduran/@-7.4322806,112.7363584,17z/data=!3m1!4b1!4m6!3m5!1s0x2dd7e77a6c6d2301:0x6a37ce68dfe60d41!8m2!3d-7.4322806!4d112.7363584!16s%2Fg%2F11lz_0nj69?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D"
+                                target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-brand-700 bg-brand-50 hover:bg-brand-100 rounded-lg transition">
+                                <i class="fa-solid fa-arrow-up-right-from-square mr-1.5"></i> Buka Rute GPS
+                            </a>
+                        </div>
+
+                        <!-- Frame Google Maps Responsif -->
+                        <div
+                            class="w-full h-80 sm:h-96 rounded-xl overflow-hidden border border-slate-200 relative bg-slate-100">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.297627137835!2d112.7363584!3d-7.432280599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e77a6c6d2301%3A0x6a37ce68dfe60d41!2sMasjid%20Muhammadiyah%20Ar-Royyan%20Buduran!5e0!3m2!1sen!2sid!4v1794204838602!5m2!1sen!2sid"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER DETAIL ALAMAT ================= -->
+    <footer class="bg-emerald-950 text-emerald-100/80 pt-12 pb-8 border-t border-emerald-800/60">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-emerald-900/80">
+
+                <!-- Kolom 1: Profil & Identitas Masjid (5 Kolom) -->
+                <div class="md:col-span-5 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-emerald-900 flex items-center justify-center text-emerald-300 text-lg border border-emerald-700/60 shadow-sm">
+                            <i class="fa-solid fa-mosque"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base leading-tight">Masjid Ar-Royyan</h3>
+                            <p class="text-xs text-emerald-400 font-medium">Muhammadiyah Buduran, Sidoarjo</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-emerald-200/70 leading-relaxed pr-2">
+                        Pusat pembinaan ibadah jamaah, dakwah amar ma'ruf nahi munkar, serta sarana silaturahmi warga di
+                        kawasan Buduran dan sekitarnya.
+                    </p>
+                </div>
+
+                <!-- Kolom 2: Navigasi Cepat Halaman (3 Kolom) -->
+                <div class="md:col-span-3 space-y-3">
+                    <h4
+                        class="text-white text-xs font-semibold tracking-wider uppercase border-l-2 border-emerald-500 pl-2">
+                        Navigasi Halaman
+                    </h4>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="#profil"
+                                class="hover:text-white hover:underline transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-angle-right text-[10px] text-emerald-500"></i> Profil & Fasilitas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#jadwal"
+                                class="hover:text-white hover:underline transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-angle-right text-[10px] text-emerald-500"></i> Jadwal Shalat &
+                                Agenda
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#layanan"
+                                class="hover:text-white hover:underline transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-angle-right text-[10px] text-emerald-500"></i> Layanan, Kontak &
+                                Peta
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3: Detail Alamat Fisik & Patokan Wilayah (4 Kolom) -->
+                <div class="md:col-span-4 space-y-3">
+                    <h4
+                        class="text-white text-xs font-semibold tracking-wider uppercase border-l-2 border-emerald-500 pl-2">
+                        Detail Alamat Fisik
+                    </h4>
+                    <div class="text-xs text-emerald-200/80 space-y-2 leading-relaxed">
+                        <p class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot mt-1 text-emerald-400 flex-shrink-0"></i>
+                            <span>
+                                <strong>Kawasan Masjid Ar-Royyan</strong><br>
+                                Jl. Raya Lingkar Timur (Sebelah SPBU Siwalanpanji), RT 01 / RW 02, Dusun Panji, Desa
+                                Siwalanpanji, Kec. Buduran, Kabupaten Sidoarjo, Jawa Timur 61252
+                            </span>
+                        </p>
+                        <p class="flex items-start gap-2.5 text-emerald-300/70 pt-1">
+                            <i class="fa-solid fa-signs-post mt-0.5 text-emerald-400 flex-shrink-0"></i>
+                            <span><em>Akses mudah di tepi Jalan Raya Lingkar Timur Sidoarjo, sangat strategis bagi para
+                                    musafir dan pekerja di kawasan industri sekitar.</em></span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Baris Hak Cipta & Ortom -->
+            <div
+                class="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-emerald-300/60 gap-2 text-center sm:text-left">
+                <p>&copy; 2026 <strong>Masjid Ar-Royyan</strong>. Pimpinan Ranting / Cabang Muhammadiyah Buduran.</p>
+                <p class="text-emerald-400/50">Memakmurkan Masjid, Membina Umat</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isExpanded = mobileMenu.classList.toggle('hidden');
+            if (!isExpanded) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // 2. Konfigurasi Lokasi Buduran Sidoarjo & Data Jadwal Sholat Dinamis
+        const LATITUDE = -7.4322;
+        const LONGITUDE = 112.7364;
+
+        // Default data cadangan (fallback jika offline)
+        let prayerSchedule = [
+            { id: 'card-subuh', name: 'SUBUH', nextName: 'DZUHUR', hour: 4, min: 12, startMinutes: 4 * 60 + 12 },
+            { id: 'card-dzuhur', name: 'DZUHUR', nextName: 'ASHAR', hour: 11, min: 38, startMinutes: 11 * 60 + 38 },
+            { id: 'card-ashar', name: 'ASHAR', nextName: 'MAGHRIB', hour: 14, min: 52, startMinutes: 14 * 60 + 52 },
+            { id: 'card-maghrib', name: 'MAGHRIB', nextName: 'ISYA', hour: 17, min: 48, startMinutes: 17 * 60 + 48 },
+            { id: 'card-isya', name: 'ISYA', nextName: 'SUBUH', hour: 18, min: 59, startMinutes: 18 * 60 + 59 },
+        ];
+
+        // Style Class Kartu Normal (Frosted Glass Hijau Tua)
+        const inactiveCardClasses = [
+            'bg-emerald-950/40', 'border', 'border-emerald-700/30', 'backdrop-blur-sm',
+            'shadow-sm', 'hover:bg-emerald-900/40'
+        ];
+
+        // Style Class Kartu Aktif (Menyala Mengikuti Tema Hijau Masjid - Mint / Luminous Emerald Glow)
+        const activeCardClasses = [
+            'bg-gradient-to-b', 'from-emerald-400', 'to-emerald-600',
+            'text-slate-950', 'border-2', 'border-emerald-200',
+            'shadow-[0_0_35px_rgba(52,211,153,0.55)]',
+            'scale-105', '-translate-y-1', 'z-10'
+        ];
+
+        // Helper konversi format "HH:MM" (API) ke objek jam & menit
+        function parseTimeStr(timeStr) {
+            const cleanStr = timeStr.split(' ')[0]; // Bersihkan jika ada timezone bawaan API
+            const [h, m] = cleanStr.split(':').map(Number);
+            return { hour: h, min: m, startMinutes: h * 60 + m, raw: cleanStr };
+        }
+
+        // Fetch data resmi dari Aladhan API (Metode 20 = Kemenag RI)
+        async function fetchPrayerTimesAPI() {
+            const now = new Date();
+            const day = now.getDate();
+            const month = now.getMonth() + 1;
+            const year = now.getFullYear();
+
+            try {
+                const response = await fetch(
+                    `https://api.aladhan.com/v1/timings/${day}-${month}-${year}?latitude=${LATITUDE}&longitude=${LONGITUDE}&method=20`
+                );
+                const result = await response.json();
+
+                if (result.code === 200 && result.data) {
+                    const timings = result.data.timings;
+                    const hijri = result.data.date.hijri;
+
+                    const subuh = parseTimeStr(timings.Fajr);
+                    const dzuhur = parseTimeStr(timings.Dhuhr);
+                    const ashar = parseTimeStr(timings.Asr);
+                    const maghrib = parseTimeStr(timings.Maghrib);
+                    const isya = parseTimeStr(timings.Isha);
+
+                    // Perbarui jadwal dinamis
+                    prayerSchedule = [
+                        { id: 'card-subuh', name: 'SUBUH', nextName: 'DZUHUR', hour: subuh.hour, min: subuh.min, startMinutes: subuh.startMinutes },
+                        { id: 'card-dzuhur', name: 'DZUHUR', nextName: 'ASHAR', hour: dzuhur.hour, min: dzuhur.min, startMinutes: dzuhur.startMinutes },
+                        { id: 'card-ashar', name: 'ASHAR', nextName: 'MAGHRIB', hour: ashar.hour, min: ashar.min, startMinutes: ashar.startMinutes },
+                        { id: 'card-maghrib', name: 'MAGHRIB', nextName: 'ISYA', hour: maghrib.hour, min: maghrib.min, startMinutes: maghrib.startMinutes },
+                        { id: 'card-isya', name: 'ISYA', nextName: 'SUBUH', hour: isya.hour, min: isya.min, startMinutes: isya.startMinutes },
+                    ];
+
+                    // Tampilkan angka jam ke masing-masing elemen kartu
+                    const elSubuh = document.getElementById('time-subuh');
+                    const elDzuhur = document.getElementById('time-dzuhur');
+                    const elAshar = document.getElementById('time-ashar');
+                    const elMaghrib = document.getElementById('time-maghrib');
+                    const elIsya = document.getElementById('time-isya');
+
+                    if (elSubuh) elSubuh.textContent = subuh.raw;
+                    if (elDzuhur) elDzuhur.textContent = dzuhur.raw;
+                    if (elAshar) elAshar.textContent = ashar.raw;
+                    if (elMaghrib) elMaghrib.textContent = maghrib.raw;
+                    if (elIsya) elIsya.textContent = isya.raw;
+
+                    // Tampilkan tanggal Hijriah dari respon API resmi
+                    const hijriElem = document.getElementById('hijri-date');
+                    if (hijriElem && hijri) {
+                        hijriElem.textContent = `${hijri.day} ${hijri.month.en} ${hijri.year} H`;
+                    }
+                }
+            } catch (error) {
+                console.warn("Gagal memuat API jadwal shalat, menggunakan waktu estimasi lokal Buduran.", error);
+            }
+        }
+
+        function updatePrayersAndCountdown(now) {
+            const currentHours = now.getHours();
+            const currentMinutes = now.getMinutes();
+            const currentSeconds = now.getSeconds();
+            const totalCurrentMinutes = (currentHours * 60) + currentMinutes;
+            const totalCurrentSeconds = (totalCurrentMinutes * 60) + currentSeconds;
+
+            // Cari waktu sholat yang sedang aktif & waktu berikutnya untuk countdown
+            let activeIndex = 4; // default Isya
+            let nextIndex = 0;   // default Subuh
+
+            if (totalCurrentMinutes >= prayerSchedule[0].startMinutes && totalCurrentMinutes < prayerSchedule[1].startMinutes) {
+                activeIndex = 0; // Subuh
+                nextIndex = 1;   // Menuju Dzuhur
+            } else if (totalCurrentMinutes >= prayerSchedule[1].startMinutes && totalCurrentMinutes < prayerSchedule[2].startMinutes) {
+                activeIndex = 1; // DZUHUR
+                nextIndex = 2;   // Menuju Ashar
+            } else if (totalCurrentMinutes >= prayerSchedule[2].startMinutes && totalCurrentMinutes < prayerSchedule[3].startMinutes) {
+                activeIndex = 2; // Ashar
+                nextIndex = 3;   // Menuju Maghrib
+            } else if (totalCurrentMinutes >= prayerSchedule[3].startMinutes && totalCurrentMinutes < prayerSchedule[4].startMinutes) {
+                activeIndex = 3; // Maghrib
+                nextIndex = 4;   // Menuju Isya
+            } else {
+                activeIndex = 4; // Isya
+                nextIndex = 0;   // Menuju Subuh besok
+            }
+
+            // Hitung selisih detik ke jadwal berikutnya (Countdown)
+            let targetSeconds = (prayerSchedule[nextIndex].hour * 3600) + (prayerSchedule[nextIndex].min * 60);
+            if (nextIndex === 0 && totalCurrentMinutes >= prayerSchedule[4].startMinutes) {
+                // Jika sedang Isya malam menuju Subuh keesokan harinya (+24 jam)
+                targetSeconds += 24 * 3600;
+            }
+
+            let diffSeconds = targetSeconds - totalCurrentSeconds;
+            if (diffSeconds < 0) diffSeconds = 0;
+
+            const cHours = String(Math.floor(diffSeconds / 3600)).padStart(2, '0');
+            const cMinutes = String(Math.floor((diffSeconds % 3600) / 60)).padStart(2, '0');
+            const cSecs = String(diffSeconds % 60).padStart(2, '0');
+
+            // Update Kapsul Countdown
+            const countdownLabel = document.getElementById('countdown-label');
+            const countdownTimer = document.getElementById('countdown-timer');
+            if (countdownLabel) countdownLabel.textContent = `MENUJU ${prayerSchedule[nextIndex].name}`;
+            if (countdownTimer) countdownTimer.textContent = `${cHours}:${cMinutes}:${cSecs}`;
+
+            // Update Styling 5 Kartu Sholat
+            prayerSchedule.forEach((prayer, idx) => {
+                const card = document.getElementById(prayer.id);
+                if (!card) return;
+
+                const icon = card.querySelector('.prayer-icon');
+                const name = card.querySelector('.prayer-name');
+                const time = card.querySelector('.prayer-time');
+
+                if (idx === activeIndex) {
+                    // KARTU AKTIF (MENYALA EMERALD / MINT GLOW)
+                    card.classList.remove(...inactiveCardClasses);
+                    card.classList.add(...activeCardClasses);
+
+                    if (icon) icon.className = 'prayer-icon text-xl sm:text-2xl mb-2 text-slate-900';
+                    if (name) name.className = 'prayer-name text-[11px] sm:text-xs font-black uppercase tracking-widest text-slate-900';
+                    if (time) time.className = 'prayer-time text-xl sm:text-3xl font-extrabold tracking-tight text-slate-950 mt-1';
+                } else {
+                    // KARTU TIDAK AKTIF (FROSTED GLASS)
+                    card.classList.remove(...activeCardClasses);
+                    card.classList.add(...inactiveCardClasses);
+
+                    if (icon) icon.className = 'prayer-icon text-xl sm:text-2xl mb-2 text-emerald-300/80 group-hover:text-emerald-200';
+                    if (name) name.className = 'prayer-name text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-emerald-200/80';
+                    if (time) time.className = 'prayer-time text-lg sm:text-2xl font-bold tracking-tight text-white mt-1';
+                }
+            });
+        }
+
+        // 3. Penanggalan Masehi & Jam Realtime Hero
+        function updateDates(now) {
+            // Tanggal Masehi (contoh: 09 Nov 2026)
+            const day = String(now.getDate()).padStart(2, '0');
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+            const masehiStr = `${day} ${months[now.getMonth()]} ${now.getFullYear()}`;
+
+            const masehiElem = document.getElementById('masehi-date');
+            if (masehiElem) masehiElem.textContent = masehiStr;
+
+            // Format Lengkap Jam Hero
+            const fullDateStr = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
+            const heroDate = document.getElementById('current-date');
+            if (heroDate) heroDate.textContent = fullDateStr;
+
+            const heroClock = document.getElementById('current-clock');
+            if (heroClock) {
+                const h = String(now.getHours()).padStart(2, '0');
+                const m = String(now.getMinutes()).padStart(2, '0');
+                const s = String(now.getSeconds()).padStart(2, '0');
+                heroClock.textContent = `${h}:${m}:${s}`;
+            }
+        }
+
+        // Loop Utama Realtime
+        function tick() {
+            const now = new Date();
+            updateDates(now);
+            updatePrayersAndCountdown(now);
+        }
+
+        // Jalankan fetch API saat dokumen selesai dimuat
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchPrayerTimesAPI();
+            tick();
+            setInterval(tick, 1000);
+        });
+    </script>
+</body>
+
+</html>
