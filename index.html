@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="icon" type="image/png" href="images/icon.png">
     <title>Masjid Ar-Royyan Muhammadiyah Buduran Sidoarjo</title>
     <meta name="description"
         content="Website Resmi Masjid Ar-Royyan Muhammadiyah Buduran Sidoarjo. Pusat ibadah, dakwah Islam berkemajuan, kajian rutin, dan pembinaan komunitas jamaah.">
@@ -54,13 +54,12 @@
 
                 <!-- Logo & Nama Masjid -->
                 <a href="#hero" class="flex items-center space-x-3 group">
-                    <div
-                        class="w-12 h-12 rounded-xl bg-brand-700 flex items-center justify-center text-white shadow-md shadow-brand-700/20 group-hover:bg-brand-800 transition">
-                        <i class="fa-solid fa-mosque text-2xl"></i>
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden">
+                        <img src="images/icon.png" alt="Logo Masjid Ar-Royyan" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <span
-                            class="block text-lg font-bold tracking-tight text-slate-900 group-hover:text-brand-700 transition">
+                            class="block text-lg font-bold tracking-tight text-slate-800 group-hover:text-brand-700 transition">
                             Ar-Royyan
                         </span>
                         <span class="block text-xs font-medium text-brand-700 uppercase tracking-wider">
@@ -655,14 +654,17 @@
 
                 <!-- Kolom 1: Profil & Identitas Masjid (5 Kolom) -->
                 <div class="md:col-span-5 space-y-3">
-                    <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-3.5">
+                        <!-- Wadah logo dibuat lebih lega dengan ring/border halus agar logonya menyala -->
                         <div
-                            class="w-10 h-10 rounded-xl bg-emerald-900 flex items-center justify-center text-emerald-300 text-lg border border-emerald-700/60 shadow-sm">
-                            <i class="fa-solid fa-mosque"></i>
+                            class="w-12 h-12 rounded-2xl bg-emerald-900/60 border border-emerald-500/30 p-1 flex items-center justify-center shadow-inner">
+                            <img src="images/icon.png" alt="Logo Masjid Ar-Royyan"
+                                class="w-full h-full object-contain">
                         </div>
                         <div>
-                            <h3 class="font-bold text-white text-base leading-tight">Masjid Ar-Royyan</h3>
-                            <p class="text-xs text-emerald-400 font-medium">Muhammadiyah Buduran, Sidoarjo</p>
+                            <h3 class="font-bold text-white text-lg tracking-tight leading-tight">Masjid Ar-Royyan</h3>
+                            <p class="text-xs text-emerald-300 font-medium tracking-wide">Muhammadiyah Buduran, Sidoarjo
+                            </p>
                         </div>
                     </div>
                     <p class="text-xs text-emerald-200/70 leading-relaxed pr-2">
