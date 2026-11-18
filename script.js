@@ -320,4 +320,110 @@ document.addEventListener("DOMContentLoaded", () => {
     loadJadwalMasjid();
     tick();
     setInterval(tick, 1000);
+
+    // Render QRIS Resmi Masjid Ar Royyan secara digital (Tampilan Modal Tajam)
+    const QRIS_PAYLOAD = "00020101021126710019ID.CO.DSPRATAMA.WWW011893600998060000189402159982250737241040303UMI51440014ID.CO.QRIS.WWW0215ID10254173167970303UMI5204866153033605802ID5916Masjid Ar Royyan6008Sidoarjo61056125262070703A016304A8E2";
+    const qrisContainer = document.getElementById("qris-canvas-container");
+
+    if (qrisContainer && typeof QRCode !== "undefined") {
+        new QRCode(qrisContainer, {
+            text: QRIS_PAYLOAD,
+            width: 220,
+            height: 220,
+            colorDark: "#052e16",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+        });
+    }
+
+    // Fitur Simpan / Unduh Gambar QRIS Berbingkai HD (800x1040 px)
+    const btnDownloadQris = document.getElementById("btn-download-qris");
+    if (btnDownloadQris && typeof QRCode !== "undefined") {
+        btnDownloadQris.addEventListener("click", () => {
+            // 1. Buat QR resolusi tinggi (560x560) di wadah sementara
+            const tempDiv = document.createElement("div");
+            new QRCode(tempDiv, {
+                text: QRIS_PAYLOAD,
+                width: 560,
+                height: 560,
+                colorDark: "#052e16",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.M
+            });
+
+            // Beri jeda singkat agar kanvas QR HD selesai dirender
+            setTimeout(() => {
+                const hdQrCanvas = tempDiv.querySelector("canvas");
+                if (!hdQrCanvas) return;
+
+                // 2. Siapkan Kanvas Kartu Bingkai HD (800 x 1040)
+                const cardCanvas = document.createElement("canvas");
+                cardCanvas.width = 800;
+                cardCanvas.height = 1040;
+                const ctx = cardCanvas.getContext("2d");
+
+                // Latar belakang putih bersih seluruh kartu
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(0, 0, 800, 1040);
+
+                // Bingkai luar hijau zamrud
+                ctx.strokeStyle = "#047857";
+                ctx.lineWidth = 14;
+                ctx.strokeRect(24, 24, 752, 992);
+
+                // Header hijau gelap di bagian atas kartu
+                ctx.fillStyle = "#064e3b";
+                ctx.fillRect(31, 31, 738, 175);
+
+                // Garis aksen kuning emas Muhammadiyah di bawah header
+                ctx.fillStyle = "#f59e0b";
+                ctx.fillRect(31, 206, 738, 10);
+
+                // Teks Header
+                ctx.textAlign = "center";
+                ctx.fillStyle = "#fbbf24";
+                ctx.font = "bold 20px sans-serif";
+                ctx.fillText("QRIS INFAQ & WAKAF RESMI", 400, 85);
+
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "bold 34px sans-serif";
+                ctx.fillText("MASJID AR-ROYYAN", 400, 132);
+
+                ctx.fillStyle = "#a7f3d0";
+                ctx.font = "600 22px sans-serif";
+                ctx.fillText("Muhammadiyah Buduran • Sidoarjo", 400, 172);
+
+                // Kotak putih & border tipis di sekeliling QR (Quiet Zone luas agar mudah di-scan)
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(95, 255, 610, 610);
+                ctx.strokeStyle = "#d1fae5";
+                ctx.lineWidth = 4;
+                ctx.strokeRect(95, 255, 610, 610);
+
+                // Tempelkan QR HD tepat di tengah kotak (dengan margin 25px di tiap sisi)
+                ctx.drawImage(hdQrCanvas, 120, 280, 560, 560);
+
+                // Informasi NMID & Rekening di bagian bawah
+                ctx.fillStyle = "#0f172a";
+                ctx.font = "bold 24px monospace";
+                ctx.fillText("NMID: ID1025417316797", 400, 912);
+
+                ctx.fillStyle = "#047857";
+                ctx.font = "bold 22px sans-serif";
+                ctx.fillText("BCA Syariah (536) • 0111191912", 400, 952);
+
+                ctx.fillStyle = "#64748b";
+                ctx.font = "500 18px sans-serif";
+                ctx.fillText("a.n. Masjid Ar Royyan", 400, 984);
+
+                // 3. Unduh hasil kartu QRIS HD sebagai PNG
+                const link = document.createElement("a");
+                link.href = cardCanvas.toDataURL("image/png");
+                link.download = "QRIS-Masjid-Ar-Royyan-Buduran.png";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }, 80);
+        });
+    }
 });

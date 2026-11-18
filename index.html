@@ -903,18 +903,25 @@
                 </button>
             </div>
 
-            <!-- Gambar QRIS Resmi -->
-            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 flex flex-col items-center">
-                <img src="images/qris-arroyyan.png" alt="QRIS Infaq Masjid Ar-Royyan Muhammadiyah Buduran"
-                    class="w-56 h-56 object-contain rounded-xl bg-white p-2 shadow-xs"
-                    onerror="this.onerror=null; this.src='https://placehold.co/400x400/ffffff/064e3b?text=QRIS+BCA+Syariah%0AMasjid+Ar+Royyan';">
-                <span class="text-xs font-bold text-slate-800 mt-3">BCA Syariah (536) • 0111191912</span>
-                <span class="text-[11px] text-slate-500">a.n. Masjid Ar Royyan Muhammadiyah</span>
+            <!-- Wadah Render QRIS Digital Tajam -->
+            <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200/80 flex flex-col items-center">
+                <div class="bg-white p-3.5 rounded-2xl shadow-xs border border-slate-100">
+                    <div id="qris-canvas-container" class="flex items-center justify-center"></div>
+                </div>
+                <span class="text-xs font-bold text-slate-900 mt-3.5">MASJID AR ROYYAN • SIDOARJO</span>
+                <span class="text-[11px] font-mono text-slate-500 mt-0.5">NMID: ID1025417316797</span>
+                <span class="text-[11px] font-semibold text-brand-700 mt-1">BCA Syariah (536) • 0111191912</span>
             </div>
 
-            <p class="text-xs text-slate-500 leading-relaxed">
-                Dapat dipindai menggunakan aplikasi Mobile Banking (BSI, Mandiri, BCA, BRI, BNI) maupun e-Wallet (GoPay,
-                OVO, DANA, ShopeePay).
+            <button id="btn-download-qris" type="button"
+                class="w-full py-2.5 px-4 rounded-xl bg-brand-700 hover:bg-brand-800 text-white font-semibold text-xs transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
+                <i class="fa-solid fa-download"></i>
+                <span>Simpan Gambar QRIS</span>
+            </button>
+
+            <p class="text-[11px] text-slate-500 leading-relaxed">
+                Pindai menggunakan Mobile Banking (BCA Syariah, BSI, Mandiri, BCA, BRI, BNI) atau e-Wallet (GoPay, OVO,
+                DANA, ShopeePay).
             </p>
         </div>
     </div>
@@ -1008,6 +1015,8 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- QRCode Generator Library (Ringan & Tajam) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </body>
 
 </html>
