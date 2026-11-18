@@ -427,18 +427,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-
-window.addEventListener('DOMContentLoaded', () => {
-    const observer = new MutationObserver(() => {
-        document.querySelectorAll('div, a, iframe, aside').forEach((el) => {
-            const text = el.textContent || '';
-            if (text.includes('Powered by Netlify') || text.includes('Build your own site with Netlify')) {
-                const style = window.getComputedStyle(el);
-                if (style.position === 'fixed' || style.position === 'sticky') {
-                    el.remove();
-                }
-            }
-        });
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-});
