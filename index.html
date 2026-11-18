@@ -8,15 +8,21 @@
     <meta name="description"
         content="Website Resmi Masjid Ar-Royyan Muhammadiyah Buduran Sidoarjo. Pusat ibadah, dakwah Islam berkemajuan, kajian rutin, dan pembinaan komunitas jamaah.">
 
-    <link rel="icon" type="image/png" href="images/icon.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./images/logo-arroyyan.png?v=2">
+    <link rel="shortcut icon" type="image/png" href="./images/logo-arroyyan.png?v=2">
 
+    <!-- Google Fonts: Plus Jakarta Sans & Lora -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -24,7 +30,8 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['Lora', 'Georgia', 'serif'],
                     },
                     colors: {
                         brand: {
@@ -36,50 +43,70 @@
                             800: '#065f46',
                             900: '#064e3b',
                             950: '#052e16',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
                         }
                     }
                 }
             }
         }
     </script>
+
+    <style>
+        /* Subtle Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-600 selection:text-white">
 
     <!-- ================= NAVBAR ================= -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-xs border-b border-slate-100">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
 
                 <!-- Logo & Nama Masjid -->
                 <a href="#hero" class="flex items-center space-x-3 group">
                     <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden">
-                        <img src="images/icon.png" alt="Logo Masjid Ar-Royyan" class="w-full h-full object-contain">
+                        <img src="images/logo-arroyyan.png" alt="Logo Masjid Ar-Royyan"
+                            class="w-full h-full object-contain">
                     </div>
                     <div>
                         <span
                             class="block text-lg font-bold tracking-tight text-brand-950 group-hover:text-brand-700 transition">
                             Ar-Royyan
                         </span>
-                        <span class="block text-xs font-medium text-brand-700 uppercase tracking-wider">
+                        <span class="block text-xs font-semibold text-brand-700 uppercase tracking-wider">
                             Muhammadiyah Buduran
                         </span>
                     </div>
                 </a>
 
                 <!-- Desktop Menu Navigasi -->
-                <nav class="hidden md:flex items-center space-x-8">
+                <nav class="hidden md:flex items-center space-x-7">
                     <a href="#profil"
                         class="text-sm font-medium text-slate-600 hover:text-brand-700 transition">Profil</a>
                     <a href="#jadwal" class="text-sm font-medium text-slate-600 hover:text-brand-700 transition">Jadwal
                         & Program</a>
                     <a href="#layanan"
-                        class="text-sm font-medium text-slate-600 hover:text-brand-700 transition">Layanan & Kontak</a>
+                        class="text-sm font-medium text-slate-600 hover:text-brand-700 transition">Layanan & Infaq</a>
                     <a href="#lokasi"
                         class="text-sm font-medium text-slate-600 hover:text-brand-700 transition">Lokasi</a>
                     <a href="https://wa.me/6285117559504?text=Assalamu'alaikum%20Pengurus%20Masjid%20Ar-Royyan"
                         target="_blank" rel="noopener noreferrer"
-                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-brand-700 hover:bg-brand-800 rounded-lg shadow-sm transition">
+                        class="inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-brand-700 hover:bg-brand-800 rounded-lg shadow-xs transition">
                         <i class="fa-brands fa-whatsapp mr-2 text-base"></i> Hubungi Kami
                     </a>
                 </nav>
@@ -95,22 +122,22 @@
         </div>
 
         <!-- Dropdown Menu Mobile -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-3">
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-2.5">
             <a href="#profil"
                 class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700">Profil
                 Singkat</a>
             <a href="#jadwal"
                 class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700">Jadwal
-                Ibadah & Agenda</a>
+                & Program</a>
             <a href="#layanan"
                 class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700">Layanan
-                & Pengurus</a>
+                & Infaq</a>
             <a href="#lokasi"
                 class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700">Peta
                 Lokasi</a>
-            <a href="https://wa.me/6285117559504?text=Assalamu'alaikum%20Pengurus%20Masjid%20Ar-Royyan" target="_blank"
+            <a href="https://wa.me/6281234567890?text=Assalamu'alaikum%20Pengurus%20Masjid%20Ar-Royyan" target="_blank"
                 rel="noopener noreferrer"
-                class="mobile-nav-link flex items-center justify-center w-full px-4 py-2.5 text-base font-medium text-white bg-brand-700 rounded-lg shadow-sm">
+                class="mobile-nav-link flex items-center justify-center w-full px-4 py-2.5 text-base font-semibold text-white bg-brand-700 rounded-lg shadow-xs mt-2">
                 <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> Hubungi via WhatsApp
             </a>
         </div>
@@ -129,28 +156,29 @@
 
                     <div class="lg:col-span-7 text-center lg:text-left space-y-6">
                         <div
-                            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-700/60 border border-brand-500/30 text-xs sm:text-sm text-brand-100">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                            Pusat Ibadah Warga & Musafir
+                            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-700/60 border border-gold-400/30 text-xs sm:text-sm text-brand-100">
+                            <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+                            Pusat Ibadah Warga & Musafir 24 Jam
                         </div>
 
-                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                        <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
                             Masjid Ar-Royyan <br>
                             <span class="text-emerald-300">Muhammadiyah Buduran</span>
                         </h1>
 
                         <p
-                            class="text-base sm:text-lg text-emerald-100/90 max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
+                            class="text-base sm:text-lg text-emerald-100/90 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
                             Mewujudkan masjid yang makmur, ramah keluarga, serta menjadi wahana dakwah pencerahan dan
                             pembinaan ukhuwah Islamiyah di Kabupaten Sidoarjo.
                         </p>
 
-                        <!-- Card Jam Digital Realtime Sidoarjo (Struktur Asli Anda) -->
+                        <!-- Card Jam Digital Realtime Sidoarjo (Tetap Rapi & Proporsional) -->
                         <div
                             class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/15 max-w-md mx-auto lg:mx-0 shadow-lg text-left">
                             <div
                                 class="flex items-center justify-between text-xs sm:text-sm text-emerald-200 border-b border-white/10 pb-2 mb-2">
-                                <span class="flex items-center"><i class="fa-regular fa-clock mr-2"></i> Waktu Indonesia
+                                <span class="flex items-center"><i class="fa-regular fa-clock mr-2 text-gold-400"></i>
+                                    Waktu Indonesia
                                     Barat</span>
                                 <span id="current-date" class="font-medium">Memuat tanggal...</span>
                             </div>
@@ -162,8 +190,7 @@
                                 </div>
                                 <div class="text-right">
                                     <span class="text-xs block text-emerald-200">Wilayah</span>
-                                    <span class="text-sm font-semibold text-white">Siwalanpanji, Buduran,
-                                        Sidoarjo</span>
+                                    <span class="text-sm font-semibold text-white">Siwalanpanji, Sidoarjo</span>
                                 </div>
                             </div>
                         </div>
@@ -174,9 +201,9 @@
                                 class="px-6 py-3 rounded-xl bg-white text-brand-900 font-semibold hover:bg-emerald-50 transition shadow-md">
                                 <i class="fa-solid fa-calendar-check mr-2 text-brand-700"></i> Lihat Jadwal & Program
                             </a>
-                            <a href="#profil"
-                                class="px-6 py-3 rounded-xl border border-white/40 text-white font-medium hover:bg-white/10 transition">
-                                Profil Singkat
+                            <a href="#layanan"
+                                class="px-6 py-3 rounded-xl border border-gold-400/50 bg-gold-500/10 text-white font-medium hover:bg-gold-500/20 transition">
+                                <i class="fa-solid fa-hand-holding-heart mr-2 text-gold-400"></i> Infaq & Layanan
                             </a>
                         </div>
                     </div>
@@ -189,9 +216,9 @@
                                 class="w-full h-80 sm:h-96 object-cover hover:scale-105 transition duration-500"
                                 onerror="this.onerror=null; this.src='https://placehold.co/600x600/065f46/ffffff?text=Masjid+Ar-Royyan+Buduran';">
                             <div
-                                class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-white">
+                                class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent p-5 text-white">
                                 <p class="text-sm font-semibold">Tampak Depan Masjid Ar-Royyan</p>
-                                <p class="text-xs text-slate-300">Buduran, Kab. Sidoarjo, Jawa Timur</p>
+                                <p class="text-xs text-slate-300">Jl. Raya Lingkar Timur, Buduran, Sidoarjo</p>
                             </div>
                         </div>
                     </div>
@@ -200,27 +227,24 @@
             </div>
         </section>
 
-        <!-- ================= 1. PROFIL RINGKAS ================= -->
-        <section id="profil" class="py-16 sm:py-20 bg-white">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- ================= 1. PROFIL RINGKAS (RATA KIRI / ASIMETRIS) ================= -->
+        <section id="profil" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
 
-                <div class="text-center max-w-2xl mx-auto mb-14">
-                    <span
-                        class="text-sm font-semibold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full">
-                        Tentang Kami
-                    </span>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-3">
-                        Profil Singkat Masjid Ar-Royyan
-                    </h2>
-                    <div class="w-16 h-1 bg-brand-600 mx-auto mt-3 rounded-full"></div>
-                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Kolom Kiri: Narasi Profil Rata Kiri -->
+                    <div class="lg:col-span-6 space-y-5 text-slate-600 text-base leading-relaxed">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-widest text-gold-600">
+                                Tentang Masjid Kami
+                            </span>
+                            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-slate-900 mt-1.5 leading-snug">
+                                Pusat Ibadah, Dakwah, dan Ramah Musafir 24 Jam
+                            </h2>
+                            <div class="w-14 h-1 bg-gold-500 mt-3 rounded-full"></div>
+                        </div>
 
-                    <div class="space-y-5 text-slate-600 text-base leading-relaxed">
-                        <h3 class="text-xl font-bold text-slate-900">
-                            Pusat Ibadah, Dakwah, dan Ramah Musafir 24 Jam
-                        </h3>
                         <p>
                             Berdiri di atas tanah wakaf di kawasan Lingkar Timur Buduran dan diresmikan langsung oleh
                             Ketua Umum PP Muhammadiyah Prof. Dr. Haedar Nashir pada 31 Januari 2026, Masjid Ar-Royyan
@@ -233,8 +257,8 @@
                             serta pemberdayaan sosial melalui ruang kajian dan Kemadjoean Café.
                         </p>
 
-                        <div class="bg-slate-50 border-l-4 border-brand-600 p-4 rounded-r-xl">
-                            <h4 class="text-sm font-semibold text-slate-900 uppercase tracking-wide">Visi Utama</h4>
+                        <div class="bg-brand-50/60 border-l-4 border-gold-500 p-4 rounded-r-xl">
+                            <h4 class="text-xs font-bold text-brand-900 uppercase tracking-wider">Visi Utama</h4>
                             <p class="text-sm text-slate-700 italic mt-1">
                                 "Menjadi masjid ramah musafir berbasis gerakan anak muda yang memakmurkan jamaah melalui
                                 dakwah berkemajuan, pelayanan sosial, dan penguatan ukhuwah Islamiyah."
@@ -242,59 +266,70 @@
                         </div>
                     </div>
 
-                    <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100 shadow-sm">
-                        <h3 class="text-lg font-bold text-slate-900 mb-6 flex items-center">
-                            <i class="fa-solid fa-building-columns text-brand-700 mr-2.5"></i> Fasilitas Masjid
-                        </h3>
+                    <!-- Kolom Kanan: Fasilitas Masjid (Dengan Ikon Baru yang Presisi) -->
+                    <div class="lg:col-span-6 bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-200/70 shadow-xs">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-bold text-slate-900 flex items-center">
+                                <i class="fa-solid fa-building-columns text-brand-700 mr-2.5"></i> Fasilitas Utama
+                                Masjid
+                            </h3>
+                            <span
+                                class="text-[11px] font-semibold text-brand-700 bg-brand-100/70 px-2.5 py-1 rounded-md">
+                                Terbuka untuk Umum
+                            </span>
+                        </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
+                            <!-- Fasilitas 1 -->
                             <div
-                                class="flex items-start space-x-3 p-3 bg-white rounded-xl shadow-xs border border-slate-100">
-                                <div class="p-2.5 bg-brand-50 text-brand-700 rounded-lg">
+                                class="flex items-start space-x-3.5 p-4 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-brand-200 transition">
+                                <div class="p-2.5 bg-brand-50 text-brand-700 rounded-xl flex-shrink-0">
                                     <i class="fa-solid fa-snowflake text-lg"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-slate-800">Ruang Utama Shalat</h4>
-                                    <p class="text-xs text-slate-500 mt-0.5">Sejuk ber-AC, karpet bersih, dan nyaman
-                                        untuk beribadah.</p>
+                                    <h4 class="text-sm font-bold text-slate-800">Ruang Utama Shalat</h4>
+                                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">Sejuk ber-AC, karpet bersih,
+                                        dan nyaman untuk beribadah.</p>
                                 </div>
                             </div>
 
+                            <!-- Fasilitas 2 -->
                             <div
-                                class="flex items-start space-x-3 p-3 bg-white rounded-xl shadow-xs border border-slate-100">
-                                <div class="p-2.5 bg-brand-50 text-brand-700 rounded-lg">
+                                class="flex items-start space-x-3.5 p-4 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-brand-200 transition">
+                                <div class="p-2.5 bg-brand-50 text-brand-700 rounded-xl flex-shrink-0">
                                     <i class="fa-solid fa-faucet-drip text-lg"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-slate-800">Tempat Wudhu & Toilet</h4>
-                                    <p class="text-xs text-slate-500 mt-0.5">Bersih dan terpisah antara area ikhwan dan
-                                        akhwat.</p>
+                                    <h4 class="text-sm font-bold text-slate-800">Tempat Wudhu & Toilet</h4>
+                                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">Bersih dan terpisah antara
+                                        area ikhwan dan akhwat.</p>
                                 </div>
                             </div>
 
+                            <!-- Fasilitas 3: Area Ramah Musafir 24 Jam -->
                             <div
-                                class="flex items-start space-x-3 p-3 bg-white rounded-xl shadow-xs border border-slate-100">
-                                <div class="p-2.5 bg-brand-50 text-brand-700 rounded-lg">
+                                class="flex items-start space-x-3.5 p-4 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-brand-200 transition">
+                                <div class="p-2.5 bg-amber-50 text-gold-600 rounded-xl flex-shrink-0">
                                     <i class="fa-solid fa-bed text-lg"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-slate-800">Area Ramah Musafir 24 Jam</h4>
-                                    <p class="text-xs text-slate-500 mt-0.5">Terbuka 24 jam dengan fasilitas istirahat
-                                        yang aman bagi musafir.</p>
+                                    <h4 class="text-sm font-bold text-slate-800">Area Ramah Musafir 24 Jam</h4>
+                                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">Terbuka 24 jam dengan
+                                        fasilitas istirahat yang aman bagi musafir.</p>
                                 </div>
                             </div>
 
+                            <!-- Fasilitas 4: Kemadjoean Café & Kajian -->
                             <div
-                                class="flex items-start space-x-3 p-3 bg-white rounded-xl shadow-xs border border-slate-100">
-                                <div class="p-2.5 bg-brand-50 text-brand-700 rounded-lg">
+                                class="flex items-start space-x-3.5 p-4 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-brand-200 transition">
+                                <div class="p-2.5 bg-amber-50 text-gold-600 rounded-xl flex-shrink-0">
                                     <i class="fa-solid fa-mug-hot text-lg"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-slate-800">Kemadjoean Café & Kajian</h4>
-                                    <p class="text-xs text-slate-500 mt-0.5">Ruang ngaji santai, diskusi anak muda,
-                                        dan sajian gratis jamaah.
-                                    </p>
+                                    <h4 class="text-sm font-bold text-slate-800">Kemadjoean Café & Kajian</h4>
+                                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">Ruang ngaji santai, diskusi
+                                        anak muda, dan sajian gratis jamaah.</p>
                                 </div>
                             </div>
 
@@ -306,24 +341,24 @@
             </div>
         </section>
 
-        <!-- ================= 2. JADWAL IBADAH & AGENDA ================= -->
-        <section id="jadwal" class="py-16 sm:py-20 bg-slate-50 border-y border-slate-200/60">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- ================= 2. JADWAL SHALAT & PROGRAM MASJID ================= -->
+        <section id="jadwal" class="py-16 sm:py-24 bg-slate-50 border-y border-slate-200/60">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
 
                 <div class="text-center max-w-2xl mx-auto mb-10">
                     <span
-                        class="text-sm font-semibold uppercase tracking-wider text-brand-700 bg-brand-100/60 px-3 py-1 rounded-full">
+                        class="text-xs font-bold uppercase tracking-widest text-brand-700 bg-brand-100/70 px-3 py-1 rounded-full">
                         Kalender Hijriah Global Tunggal
                     </span>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-3">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-slate-900 mt-3">
                         Jadwal Ibadah & Program Masjid
                     </h2>
-                    <div class="w-16 h-1 bg-brand-600 mx-auto mt-3 rounded-full"></div>
+                    <div class="w-16 h-1 bg-gold-500 mx-auto mt-3 rounded-full"></div>
                 </div>
 
                 <!-- WIDGET JADWAL SHALAT KHUSUS MASJID AR-ROYYAN (STANDAR HISAB MUHAMMADIYAH) -->
                 <div
-                    class="relative bg-gradient-to-b from-[#063b2c] via-[#052e22] to-[#04241b] text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-emerald-900/60 overflow-hidden mb-14">
+                    class="relative bg-gradient-to-b from-[#063b2c] via-[#052e22] to-[#04241b] text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-emerald-900/60 overflow-hidden mb-16">
                     <div
                         class="absolute inset-0 opacity-10 bg-[radial-gradient(#34d399_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none">
                     </div>
@@ -344,7 +379,8 @@
                         <!-- Bar Info Lokasi Tetap Masjid Ar-Royyan & Countdown -->
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                             <div class="space-y-1">
-                                <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                                <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5">
+                                    <i class="fa-solid fa-mosque text-gold-400 text-lg"></i>
                                     <span>Jadwal Shalat Masjid Ar-Royyan</span>
                                 </h3>
                                 <p class="text-xs sm:text-sm text-emerald-200/80">
@@ -355,10 +391,10 @@
                             <!-- Kapsul Countdown Waktu Shalat Selanjutnya -->
                             <div class="flex flex-col sm:items-end justify-center">
                                 <div
-                                    class="inline-flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/[0.07] border border-white/15 backdrop-blur-md">
+                                    class="inline-flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/[0.07] border border-gold-400/25 backdrop-blur-md">
                                     <div class="text-left">
                                         <span id="countdown-label"
-                                            class="block text-[10px] font-bold tracking-widest text-emerald-300 uppercase">
+                                            class="block text-[10px] font-bold tracking-widest text-gold-400 uppercase">
                                             MEMUAT...
                                         </span>
                                         <span class="block text-[10px] text-emerald-200/60">Waktu Subuh MTT PP
@@ -434,14 +470,13 @@
                     </div>
                 </div>
 
-                <!-- ================= PROGRAM & KEGIATAN MASJID (VERSI LITE) ================= -->
-                <div class="pt-4">
-                    <div class="text-center max-w-2xl mx-auto mb-8">
-                        <span
-                            class="text-xs font-semibold uppercase tracking-wider text-brand-700 bg-brand-100/70 px-3 py-1 rounded-full">
+                <!-- ================= PROGRAM & KEGIATAN MASJID (VERSI LITE DENGAN JANGKAR BAWAH) ================= -->
+                <div class="pt-2 reveal">
+                    <div class="text-center max-w-2xl mx-auto mb-10">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gold-600">
                             Program Unggulan
                         </span>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mt-2.5">
+                        <h3 class="font-serif text-xl sm:text-2xl font-bold text-slate-900 mt-1.5">
                             Program Masjid Ar-Royyan Muhammadiyah Buduran
                         </h3>
                         <p class="text-xs sm:text-sm text-slate-500 mt-1.5">
@@ -450,138 +485,195 @@
                         </p>
                     </div>
 
-                    <!-- Grid 6 Kartu Program (Tanpa Sidebar Kiri, Foto + Kategori + Judul + Deskripsi) -->
+                    <!-- Grid 6 Kartu Program -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                         <!-- Program 1: Majelis Ilmu & Pengajian Rutin -->
                         <div
-                            class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
+                            class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-md transition group flex flex-col">
                             <div class="relative h-48 w-full overflow-hidden bg-emerald-900">
                                 <img src="images/program1.png" alt="Majelis Ilmu dan Pengajian Rutin Masjid Ar-Royyan"
                                     class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/065f46/ffffff?text=Majelis+Ilmu+%26+Pengajian';">
+                                <span
+                                    class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-xs text-[10px] font-bold tracking-wider uppercase text-slate-800 shadow-xs">
+                                    EVENT MASJID
+                                </span>
                             </div>
                             <div class="p-5 flex-1 flex flex-col">
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-amber-600 mb-1">
-                                    EVENT MASJID
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gold-600 mb-1">
+                                    KAJIAN KEISLAMAN
                                 </span>
                                 <h4 class="text-base font-bold text-slate-900 mb-2 leading-snug">
                                     Majelis Ilmu & Pengajian Rutin
                                 </h4>
-                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                                     Kajian rutin pemahaman Al-Qur'an, fikih, dan pembinaan keislaman berkemajuan bersama
                                     asatidz Muhammadiyah untuk jamaah umum.
                                 </p>
+                                <div
+                                    class="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                                    <span><i class="fa-regular fa-calendar-check text-brand-600 mr-1.5"></i> Pekanan &
+                                        Ahad Pagi</span>
+                                    <span class="font-medium text-brand-700">Terbuka Umum</span>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Program 2: Layanan Ramah Musafir 24 Jam -->
                         <div
-                            class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
+                            class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-md transition group flex flex-col">
                             <div class="relative h-48 w-full overflow-hidden bg-emerald-900">
                                 <img src="images/program2.jpg" alt="Layanan Ramah Musafir 24 Jam Masjid Ar-Royyan"
                                     class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/047857/ffffff?text=Ramah+Musafir+24+Jam';">
+                                <span
+                                    class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-xs text-[10px] font-bold tracking-wider uppercase text-slate-800 shadow-xs">
+                                    EVENT MASJID
+                                </span>
                             </div>
                             <div class="p-5 flex-1 flex flex-col">
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-amber-600 mb-1">
-                                    EVENT MASJID
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gold-600 mb-1">
+                                    PELAYANAN JAMA'AH
                                 </span>
                                 <h4 class="text-base font-bold text-slate-900 mb-2 leading-snug">
                                     Layanan Ramah Musafir 24 Jam
                                 </h4>
-                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                                     Masjid terbuka 24 jam penuh di tepi Lingkar Timur Sidoarjo dengan ruang istirahat
                                     aman dan sajian minuman hangat gratis bagi musafir.
                                 </p>
+                                <div
+                                    class="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                                    <span><i class="fa-regular fa-clock text-brand-600 mr-1.5"></i> Buka 24 Jam
+                                        Nonstop</span>
+                                    <span class="font-medium text-brand-700">Gratis Musafir</span>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Program 3: Sembako Bahagia & Beasiswa Pendidikan Yatim -->
                         <div
-                            class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
+                            class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-md transition group flex flex-col">
                             <div class="relative h-48 w-full overflow-hidden bg-emerald-900">
                                 <img src="images/program3.png" alt="Sembako Bahagia dan Beasiswa Pendidikan Yatim"
                                     class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/059669/ffffff?text=Sembako+%26+Beasiswa+Yatim';">
+                                <span
+                                    class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-xs text-[10px] font-bold tracking-wider uppercase text-slate-800 shadow-xs">
+                                    BAITUL MAAL
+                                </span>
                             </div>
                             <div class="p-5 flex-1 flex flex-col">
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-amber-600 mb-1">
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gold-600 mb-1">
                                     SOSIAL & PENDIDIKAN
                                 </span>
                                 <h4 class="text-base font-bold text-slate-900 mb-2 leading-snug">
                                     Sembako Bahagia & Beasiswa Pendidikan Yatim
                                 </h4>
-                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                                     Penyaluran paket kebutuhan pokok rutin untuk keluarga dhuafa serta dukungan biaya
                                     pendidikan bagi anak-anak yatim di sekitar Buduran.
                                 </p>
+                                <div
+                                    class="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                                    <span><i class="fa-solid fa-hand-holding-heart text-brand-600 mr-1.5"></i> Santunan
+                                        Bulanan</span>
+                                    <span class="font-medium text-brand-700">Baitul Maal</span>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Program 4: Royyan Mart -->
                         <div
-                            class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
+                            class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-md transition group flex flex-col">
                             <div class="relative h-48 w-full overflow-hidden bg-emerald-900">
                                 <img src="images/program4.png" alt="Royyan Mart Masjid Ar-Royyan Buduran"
                                     class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/064e3b/ffffff?text=Royyan+Mart';">
+                                <span
+                                    class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-xs text-[10px] font-bold tracking-wider uppercase text-slate-800 shadow-xs">
+                                    BAITUL MU'AMALAH
+                                </span>
                             </div>
                             <div class="p-5 flex-1 flex flex-col">
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-amber-600 mb-1">
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gold-600 mb-1">
                                     KEMANDIRIAN EKONOMI
                                 </span>
                                 <h4 class="text-base font-bold text-slate-900 mb-2 leading-snug">
                                     Royyan Mart
                                 </h4>
-                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                                     Unit usaha ritel milik masjid yang menyediakan kebutuhan harian halal dengan harga
                                     terjangkau untuk memperkuat kemandirian ekonomi umat.
                                 </p>
+                                <div
+                                    class="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                                    <span><i class="fa-solid fa-store text-brand-600 mr-1.5"></i> Setiap Hari</span>
+                                    <span class="font-medium text-brand-700">Ekonomi Umat</span>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Program 5: The SaturNight -->
                         <div
-                            class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
+                            class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-md transition group flex flex-col">
                             <div class="relative h-48 w-full overflow-hidden bg-emerald-900">
                                 <img src="images/program5.png" alt="The SaturNight Kajian Pemuda Masjid Ar-Royyan"
                                     class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/047857/ffffff?text=The+SaturNight';">
+                                <span
+                                    class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-xs text-[10px] font-bold tracking-wider uppercase text-slate-800 shadow-xs">
+                                    EVENT MASJID
+                                </span>
                             </div>
                             <div class="p-5 flex-1 flex flex-col">
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-amber-600 mb-1">
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gold-600 mb-1">
                                     DAKWAH ANAK MUDA
                                 </span>
                                 <h4 class="text-base font-bold text-slate-900 mb-2 leading-snug">
                                     The SaturNight
                                 </h4>
-                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                                     Agenda malam Ahad kreatif bersama remaja dan takmir muda berisi bincang santai
                                     keislaman, ngopi bareng, dan silaturahmi komunitas.
                                 </p>
+                                <div
+                                    class="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                                    <span><i class="fa-solid fa-mug-hot text-brand-600 mr-1.5"></i> Malam Ahad</span>
+                                    <span class="font-medium text-brand-700">Pemuda & Umum</span>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Program 6: Makan Gratis Bersama (MAGER) -->
                         <div
-                            class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
+                            class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-md transition group flex flex-col">
                             <div class="relative h-48 w-full overflow-hidden bg-emerald-900">
                                 <img src="images/program6.png" alt="Makan Gratis Bersama MAGER Masjid Ar-Royyan"
                                     class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/059669/ffffff?text=Makan+Gratis+MAGER';">
+                                <span
+                                    class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-xs text-[10px] font-bold tracking-wider uppercase text-slate-800 shadow-xs">
+                                    EVENT MASJID
+                                </span>
                             </div>
                             <div class="p-5 flex-1 flex flex-col">
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-amber-600 mb-1">
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gold-600 mb-1">
                                     BERBAGI SESAMA
                                 </span>
                                 <h4 class="text-base font-bold text-slate-900 mb-2 leading-snug">
                                     Makan Gratis Bersama (MAGER)
                                 </h4>
-                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                                     Program penyediaan hidangan makan gratis setiap hari di area masjid bagi para
                                     jamaah, musafir, pekerja, dan warga yang membutuhkan.
                                 </p>
+                                <div
+                                    class="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                                    <span><i class="fa-solid fa-utensils text-brand-600 mr-1.5"></i> Setiap Hari</span>
+                                    <span class="font-medium text-brand-700">Gratis Jamaah</span>
+                                </div>
                             </div>
                         </div>
 
@@ -591,48 +683,100 @@
             </div>
         </section>
 
-        <!-- ================= 3. LAYANAN & KONTEN INTERAKTIF ================= -->
-        <section id="layanan" class="py-16 sm:py-20 bg-white">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- ================= 3. LAYANAN, INFAQ DIGITAL & LOKASI ================= -->
+        <section id="layanan" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
 
-                <div class="text-center max-w-2xl mx-auto mb-14">
-                    <span
-                        class="text-sm font-semibold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full">
-                        Layanan & Interaksi
+                <!-- Header Rata Kiri agar selaras dengan bagian Profil -->
+                <div class="max-w-2xl mb-12">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-600">
+                        Layanan, Donasi & Lokasi
                     </span>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-3">
-                        Kontak Pengurus, Peta & Media Sosial
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-slate-900 mt-1.5">
+                        Infaq Digital, Kontak Takmir & Peta Masjid
                     </h2>
-                    <div class="w-16 h-1 bg-brand-600 mx-auto mt-3 rounded-full"></div>
+                    <div class="w-14 h-1 bg-gold-500 mt-3 rounded-full"></div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-                    <!-- Kontak Pengurus & Media Sosial -->
+                    <!-- Kolom Kiri: Infaq Digital QRIS + Kontak + Media Sosial -->
                     <div class="lg:col-span-5 space-y-6">
+
+                        <!-- KARTU BARU: INFAQ & WAKAF DIGITAL (QRIS + SALIN REKENING) -->
+                        <div
+                            class="bg-gradient-to-br from-brand-900 via-brand-800 to-emerald-950 text-white p-6 rounded-2xl shadow-lg border border-brand-700/60 relative overflow-hidden">
+                            <div class="relative z-10 space-y-4">
+                                <div class="flex items-start justify-between gap-3">
+                                    <div>
+                                        <span
+                                            class="inline-block text-[10px] font-bold uppercase tracking-widest text-gold-400 bg-white/10 px-2.5 py-0.5 rounded-full mb-1.5">
+                                            Infaq & Wakaf Operasional
+                                        </span>
+                                        <h3 class="text-lg font-bold text-white leading-snug">
+                                            Dukung Program Kebaikan Masjid
+                                        </h3>
+                                    </div>
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-gold-500/20 border border-gold-400/30 text-gold-400 flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-qrcode text-lg"></i>
+                                    </div>
+                                </div>
+
+                                <p class="text-xs text-emerald-100/85 leading-relaxed">
+                                    Salurkan infaq terbaik Anda untuk mendukung program MAGER, Layanan Musafir 24 Jam,
+                                    dan Santunan Yatim Dhuafa.
+                                </p>
+
+                                <!-- Kotak Rekening BCA Syariah + Tombol Salin -->
+                                <div
+                                    class="bg-white/10 backdrop-blur-xs rounded-xl p-3.5 border border-white/15 flex items-center justify-between gap-2">
+                                    <div>
+                                        <span class="block text-[10px] uppercase tracking-wider text-emerald-200">Bank
+                                            BCA Syariah (Kode: 536)</span>
+                                        <span id="norek-masjid"
+                                            class="block text-base sm:text-lg font-mono font-bold tracking-wider text-white mt-0.5">0111191912</span>
+                                        <span class="block text-[11px] text-emerald-200/80">a.n. Masjid Ar Royyan
+                                            Muhammadiyah</span>
+                                    </div>
+                                    <button id="btn-copy-norek" type="button"
+                                        class="px-3 py-2 rounded-lg bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold text-xs transition flex items-center gap-1.5 cursor-pointer shadow-xs flex-shrink-0">
+                                        <i class="fa-regular fa-copy"></i>
+                                        <span id="copy-text">Salin</span>
+                                    </button>
+                                </div>
+
+                                <!-- Tombol Buka Modal QRIS -->
+                                <button id="btn-open-qris" type="button"
+                                    class="w-full py-2.5 px-4 rounded-xl bg-white text-brand-950 hover:bg-emerald-50 font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 cursor-pointer shadow-sm">
+                                    <i class="fa-solid fa-expand text-brand-700"></i>
+                                    <span>Tampilkan Kode QRIS Masjid</span>
+                                </button>
+                            </div>
+                        </div>
 
                         <!-- Kartu WhatsApp Pengurus -->
                         <div
-                            class="bg-gradient-to-br from-emerald-50 to-teal-50/50 p-6 rounded-2xl border border-emerald-100 shadow-xs">
-                            <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center">
+                            class="bg-gradient-to-br from-emerald-50 to-teal-50/40 p-6 rounded-2xl border border-emerald-100 shadow-xs">
+                            <h3 class="text-base font-bold text-slate-900 mb-2 flex items-center">
                                 <i class="fa-solid fa-headset text-brand-700 mr-2.5"></i> Kontak Layanan Takmir
                             </h3>
-                            <p class="text-sm text-slate-600 mb-5 leading-relaxed">
-                                Butuh informasi jadwal kajian, pendaftaran santri TPQ, atau kegiatan komunitas jamaah?
-                                Silakan hubungi nomor narahubung resmi berikut:
+                            <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                                Butuh informasi jadwal kajian, konfirmasi infaq, atau koordinasi rombongan musafir?
+                                Hubungi narahubung resmi kami:
                             </p>
 
-                            <div class="space-y-3">
+                            <div class="space-y-2.5">
                                 <a href="https://wa.me/6285117559504?text=Assalamu'alaikum%20Takmir%20Masjid%20Ar-Royyan,%20saya%20ingin%20bertanya%20informasi%20masjid"
                                     target="_blank" rel="noopener noreferrer"
-                                    class="flex items-center justify-between p-3.5 bg-white rounded-xl border border-emerald-200/70 hover:border-emerald-500 hover:shadow-sm transition group">
+                                    class="flex items-center justify-between p-3 bg-white rounded-xl border border-emerald-200/70 hover:border-emerald-500 hover:shadow-xs transition group">
                                     <div class="flex items-center space-x-3">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition">
-                                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                                            class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition">
+                                            <i class="fa-brands fa-whatsapp text-lg"></i>
                                         </div>
                                         <div>
-                                            <span class="text-xs text-slate-400 block">Sekretariat / Takmir</span>
+                                            <span class="text-[11px] text-slate-400 block">Sekretariat / Takmir</span>
                                             <span class="text-sm font-semibold text-slate-800">Ustadz Ahmad Fauzi</span>
                                         </div>
                                     </div>
@@ -640,18 +784,18 @@
                                         class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-emerald-600 transition"></i>
                                 </a>
 
-                                <a href="https://wa.me/6285117559504?text=Assalamu'alaikum%20Takmir%20Masjid%20Ar-Royyan,%20saya%20ingin%20bertanya%20informasi%20masjid"
+                                <a href="https://wa.me/6285117559504?text=Assalamu'alaikum%20Pengurus%20Baitul%20Maal%20Ar-Royyan"
                                     target="_blank" rel="noopener noreferrer"
-                                    class="flex items-center justify-between p-3.5 bg-white rounded-xl border border-emerald-200/70 hover:border-emerald-500 hover:shadow-sm transition group">
+                                    class="flex items-center justify-between p-3 bg-white rounded-xl border border-emerald-200/70 hover:border-emerald-500 hover:shadow-xs transition group">
                                     <div class="flex items-center space-x-3">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition">
-                                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                                            class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition">
+                                            <i class="fa-brands fa-whatsapp text-lg"></i>
                                         </div>
                                         <div>
-                                            <span class="text-xs text-slate-400 block">Customer Service (MARBOT)</span>
-                                            <span class="text-sm font-semibold text-slate-800">Pengurus Masjid
-                                                Ar-Royyan</span>
+                                            <span class="text-[11px] text-slate-400 block">Layanan Sosial & Baitul
+                                                Maal</span>
+                                            <span class="text-sm font-semibold text-slate-800">Pengurus Ar-Royyan</span>
                                         </div>
                                     </div>
                                     <i
@@ -662,7 +806,7 @@
 
                         <!-- Tautan Media Sosial Resmi (Grid 2 Kolom Rata & Lurus) -->
                         <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
-                            <h3 class="text-base font-bold text-slate-900 mb-2">Media Sosial Resmi</h3>
+                            <h3 class="text-base font-bold text-slate-900 mb-1.5">Media Sosial Resmi</h3>
                             <p class="text-xs text-slate-500 mb-4">Ikuti dokumentasi kajian dan pengumuman terbaru di
                                 platform kami:</p>
 
@@ -696,30 +840,40 @@
 
                     </div>
 
-                    <!-- Embed Google Maps Buduran Sidoarjo -->
+                    <!-- Kolom Kanan: Embed Google Maps Buduran Sidoarjo -->
                     <div id="lokasi"
-                        class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
-                        <div class="flex items-center justify-between mb-4">
+                        class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-3">
                             <div>
                                 <h3 class="text-lg font-bold text-slate-900 flex items-center">
-                                    <i class="fa-solid fa-location-dot text-brand-700 mr-2"></i> Lokasi Masjid
+                                    <i class="fa-solid fa-location-dot text-brand-700 mr-2"></i> Lokasi Masjid Ar-Royyan
                                 </h3>
-                                <p class="text-xs text-slate-500 mt-0.5">Kecamatan Buduran, Kabupaten Sidoarjo, Jawa
-                                    Timur</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Jl. Raya Lingkar Timur, Siwalanpanji, Kec.
+                                    Buduran, Sidoarjo</p>
                             </div>
                             <a href="https://www.google.com/maps/place/Masjid+Muhammadiyah+Ar-Royyan+Buduran/@-7.4322806,112.7363584,17z/data=!3m1!4b1!4m6!3m5!1s0x2dd7e77a6c6d2301:0x6a37ce68dfe60d41!8m2!3d-7.4322806!4d112.7363584!16s%2Fg%2F11lz_0nj69?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D"
                                 target="_blank" rel="noopener noreferrer"
-                                class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-brand-700 bg-brand-50 hover:bg-brand-100 rounded-lg transition">
+                                class="inline-flex items-center px-3.5 py-2 text-xs font-semibold text-brand-700 bg-brand-50 hover:bg-brand-100 rounded-xl transition">
                                 <i class="fa-solid fa-arrow-up-right-from-square mr-1.5"></i> Buka Rute GPS
                             </a>
                         </div>
 
                         <div
-                            class="w-full h-80 sm:h-96 rounded-xl overflow-hidden border border-slate-200 relative bg-slate-100">
+                            class="w-full h-96 sm:h-[480px] rounded-xl overflow-hidden border border-slate-200 relative bg-slate-100">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.297627137835!2d112.7363584!3d-7.432280599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e77a6c6d2301%3A0x6a37ce68dfe60d41!2sMasjid%20Muhammadiyah%20Ar-Royyan%20Buduran!5e0!3m2!1sen!2sid!4v1794204838602!5m2!1sen!2sid"
-                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        </div>
+
+                        <div
+                            class="bg-slate-50 rounded-xl p-4 border border-slate-100 flex items-start gap-3 text-xs text-slate-600">
+                            <i class="fa-solid fa-circle-info text-gold-600 mt-0.5 text-sm"></i>
+                            <p class="leading-relaxed">
+                                <strong>Patokan Lokasi:</strong> Berada tepat di tepi Jalan Raya Lingkar Timur Sidoarjo
+                                (sebelah SPBU Siwalanpanji). Akses sangat mudah dijangkau kendaraan roda dua, mobil
+                                pribadi, maupun rombongan bus musafir.
+                            </p>
                         </div>
                     </div>
 
@@ -728,6 +882,42 @@
             </div>
         </section>
     </main>
+
+    <!-- ================= MODAL QRIS INFAQ MASJID ================= -->
+    <div id="qris-modal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/75 backdrop-blur-xs p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 text-center space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="flex items-center gap-2 text-left">
+                    <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-sm">QRIS Infaq Masjid</h3>
+                        <p class="text-[11px] text-slate-500">Masjid Ar-Royyan Muhammadiyah Buduran</p>
+                    </div>
+                </div>
+                <button id="btn-close-qris" type="button"
+                    class="text-slate-400 hover:text-slate-700 p-1 cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Gambar QRIS Resmi -->
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 flex flex-col items-center">
+                <img src="images/qris-arroyyan.png" alt="QRIS Infaq Masjid Ar-Royyan Muhammadiyah Buduran"
+                    class="w-56 h-56 object-contain rounded-xl bg-white p-2 shadow-xs"
+                    onerror="this.onerror=null; this.src='https://placehold.co/400x400/ffffff/064e3b?text=QRIS+BCA+Syariah%0AMasjid+Ar+Royyan';">
+                <span class="text-xs font-bold text-slate-800 mt-3">BCA Syariah (536) • 0111191912</span>
+                <span class="text-[11px] text-slate-500">a.n. Masjid Ar Royyan Muhammadiyah</span>
+            </div>
+
+            <p class="text-xs text-slate-500 leading-relaxed">
+                Dapat dipindai menggunakan aplikasi Mobile Banking (BSI, Mandiri, BCA, BRI, BNI) maupun e-Wallet (GoPay,
+                OVO, DANA, ShopeePay).
+            </p>
+        </div>
+    </div>
 
     <!-- ================= FOOTER DETAIL ALAMAT ================= -->
     <footer class="bg-emerald-950 text-emerald-100/80 pt-12 pb-8 border-t border-emerald-800/60">
@@ -739,7 +929,8 @@
                     <div class="flex items-center gap-3.5">
                         <div
                             class="w-12 h-12 rounded-2xl bg-emerald-900/60 border border-emerald-500/30 p-1 flex items-center justify-center shadow-inner">
-                            <img src="images/icon.png" alt="Logo Masjid Ar-Royyan" class="w-full h-full object-contain">
+                            <img src="images/logo-arroyyan.png" alt="Logo Masjid Ar-Royyan"
+                                class="w-full h-full object-contain">
                         </div>
                         <div>
                             <h3 class="font-bold text-white text-lg tracking-tight leading-tight">Masjid Ar-Royyan</h3>
@@ -757,28 +948,26 @@
                 <!-- Kolom 2: Navigasi Cepat Halaman -->
                 <div class="md:col-span-3 space-y-3">
                     <h4
-                        class="text-white text-xs font-semibold tracking-wider uppercase border-l-2 border-emerald-500 pl-2">
+                        class="text-white text-xs font-semibold tracking-wider uppercase border-l-2 border-gold-500 pl-2">
                         Navigasi Halaman
                     </h4>
                     <ul class="space-y-2 text-xs">
                         <li>
                             <a href="#profil"
                                 class="hover:text-white hover:underline transition flex items-center gap-1.5">
-                                <i class="fa-solid fa-angle-right text-[10px] text-emerald-500"></i> Profil & Fasilitas
+                                <i class="fa-solid fa-angle-right text-[10px] text-gold-400"></i> Profil & Fasilitas
                             </a>
                         </li>
                         <li>
                             <a href="#jadwal"
                                 class="hover:text-white hover:underline transition flex items-center gap-1.5">
-                                <i class="fa-solid fa-angle-right text-[10px] text-emerald-500"></i> Jadwal Ibadah &
-                                Program
+                                <i class="fa-solid fa-angle-right text-[10px] text-gold-400"></i> Jadwal & Program
                             </a>
                         </li>
                         <li>
                             <a href="#layanan"
                                 class="hover:text-white hover:underline transition flex items-center gap-1.5">
-                                <i class="fa-solid fa-angle-right text-[10px] text-emerald-500"></i> Layanan, Kontak &
-                                Peta
+                                <i class="fa-solid fa-angle-right text-[10px] text-gold-400"></i> Layanan, Infaq & Peta
                             </a>
                         </li>
                     </ul>
@@ -787,12 +976,12 @@
                 <!-- Kolom 3: Detail Alamat Fisik -->
                 <div class="md:col-span-4 space-y-3">
                     <h4
-                        class="text-white text-xs font-semibold tracking-wider uppercase border-l-2 border-emerald-500 pl-2">
+                        class="text-white text-xs font-semibold tracking-wider uppercase border-l-2 border-gold-500 pl-2">
                         Detail Alamat Fisik
                     </h4>
                     <div class="text-xs text-emerald-200/80 space-y-2 leading-relaxed">
                         <p class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-location-dot mt-1 text-emerald-400 flex-shrink-0"></i>
+                            <i class="fa-solid fa-location-dot mt-1 text-gold-400 flex-shrink-0"></i>
                             <span>
                                 <strong>Kawasan Masjid Ar-Royyan</strong><br>
                                 Jl. Raya Lingkar Timur (Sebelah SPBU Siwalanpanji), RT 01 / RW 02, Dusun Panji, Desa
@@ -800,7 +989,7 @@
                             </span>
                         </p>
                         <p class="flex items-start gap-2.5 text-emerald-300/70 pt-1">
-                            <i class="fa-solid fa-signs-post mt-0.5 text-emerald-400 flex-shrink-0"></i>
+                            <i class="fa-solid fa-signs-post mt-0.5 text-gold-400 flex-shrink-0"></i>
                             <span><em>Akses mudah di tepi Jalan Raya Lingkar Timur Sidoarjo, sangat strategis bagi para
                                     musafir dan pekerja di kawasan industri sekitar.</em></span>
                         </p>

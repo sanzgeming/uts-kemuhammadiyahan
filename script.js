@@ -27,7 +27,6 @@ mobileLinks.forEach(link => {
 const MASJID_LAT = -7.4286;
 const MASJID_LNG = 112.7214;
 
-// Jadwal Default (Sesuai Hisab MTT PP Muhammadiyah Siwalanpanji, Buduran)
 let prayerSchedule = [
     { id: 'card-subuh', name: 'SUBUH', hour: 3, min: 48, startMinutes: 3 * 60 + 48 },
     { id: 'card-terbit', name: 'TERBIT', hour: 4, min: 59, startMinutes: 4 * 60 + 59 },
@@ -75,7 +74,7 @@ function renderTimesToCards() {
     });
 }
 
-// 3. Fetch Jadwal Salat Resmi dari API KHGT PP Muhammadiyah
+// 3. Fetch Jadwal Salat Resmi API KHGT PP Muhammadiyah + Fallback Presisi
 async function loadJadwalMasjid() {
     const now = new Date();
     const year = now.getFullYear();
@@ -84,18 +83,12 @@ async function loadJadwalMasjid() {
     const dateIso = `${year}-${month}-${day}`;
 
     try {
-        // Endpoint resmi API KHGT Muhammadiyah (/api/sholat)
         const khgtUrl = `https://api-khgt.muhammadiyah.or.id/api/sholat?lat=${MASJID_LAT}&lon=${MASJID_LNG}&date=${dateIso}`;
         const response = await fetch(khgtUrl);
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error("Fallback ke hisab lokal");
 
         const json = await response.json();
-        console.log("Respon Resmi API KHGT Muhammadiyah:", json);
-
-        // Ambil objek jadwal dari struktur JSON KHGT (bisa di json.data, json.jadwal, atau root json)
         const root = json.data || json;
         const jadwal = root.jadwal || root.times || root.sholat || root;
 
@@ -115,24 +108,18 @@ async function loadJadwalMasjid() {
             { id: 'card-isya', name: 'ISYA', hour: sIsya.hour, min: sIsya.min, startMinutes: sIsya.startMinutes },
         ];
 
-        // Update Kalender KHGT resmi langsung dari API Muhammadiyah jika tersedia
         const hijriObj = root.hijriah || root.khgt || root.hijri;
         if (hijriObj) {
             const daysShort = ['MIN', 'SEN', 'SEL', 'RAB', 'KAM', 'JUM', 'SAB'];
             const monthsShort = ['JAN', 'FEB', 'MAR', 'APR', 'MEI', 'JUN', 'JUL', 'AGU', 'SEP', 'OKT', 'NOV', 'DES'];
             const masehiShort = `${daysShort[now.getDay()]}, ${day} ${monthsShort[now.getMonth()]} ${year}`;
-
             const teksHijri = typeof hijriObj === 'string'
                 ? hijriObj
                 : `${hijriObj.tanggal || hijriObj.day} ${hijriObj.bulan || hijriObj.month} ${hijriObj.tahun || hijriObj.year}`;
-
             document.getElementById('khgt-hijri-masehi').textContent = `${teksHijri.replace(/\s*H$/i, '')} H KHGT / ${masehiShort}`;
         }
-
     } catch (err) {
-        console.warn("Gagal terhubung ke API KHGT secara langsung, memakai kalkulasi cadangan MTT Muhammadiyah:", err);
         try {
-            // Kalibrasi tune cadangan disamakan 100% dengan output KHGT (Subuh 03:48, Terbit 04:59, Zuhur 11:16, Ashar 14:38, Maghrib 17:30, Isya 18:44)
             const fallbackUrl = `https://api.aladhan.com/v1/timings/${day}-${month}-${year}?latitude=${MASJID_LAT}&longitude=${MASJID_LNG}&method=99&methodSettings=18,null,18&school=0&tune=2,2,-1,2,1,2,2,1,0`;
             const fbRes = await fetch(fallbackUrl);
             const fbJson = await fbRes.json();
@@ -233,7 +220,7 @@ function updatePrayersAndCountdown(now) {
     });
 }
 
-// 5. Update Tanggal Hero & Header KHGT (Tanpa Huruf H Dobel)
+// 5. Update Tanggal Hero & Header KHGT
 function updateDates(now) {
     const fullDateStr = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
     const heroDate = document.getElementById('current-date');
@@ -257,7 +244,6 @@ function updateDates(now) {
         khgtDateObj.setDate(khgtDateObj.getDate() + 1);
 
         try {
-            // Bersihkan akhiran " H" bawaan browser jika sudah ada agar tidak muncul "H H"
             const rawHijri = new Intl.DateTimeFormat('id-ID-u-ca-islamic-umalqura', {
                 day: 'numeric',
                 month: 'long',
@@ -270,6 +256,58 @@ function updateDates(now) {
         }
     }
 }
+
+// 6. Fitur Salin Nomor Rekening & Modal QRIS
+const btnCopyNorek = document.getElementById('btn-copy-norek');
+const norekEl = document.getElementById('norek-masjid');
+const copyTextEl = document.getElementById('copy-text');
+
+if (btnCopyNorek && norekEl) {
+    btnCopyNorek.addEventListener('click', () => {
+        navigator.clipboard.writeText(norekEl.textContent.trim()).then(() => {
+            copyTextEl.textContent = 'Tersalin!';
+            btnCopyNorek.classList.replace('bg-gold-500', 'bg-emerald-400');
+            setTimeout(() => {
+                copyTextEl.textContent = 'Salin';
+                btnCopyNorek.classList.replace('bg-emerald-400', 'bg-gold-500');
+            }, 2000);
+        });
+    });
+}
+
+const qrisModal = document.getElementById('qris-modal');
+const btnOpenQris = document.getElementById('btn-open-qris');
+const btnCloseQris = document.getElementById('btn-close-qris');
+
+if (btnOpenQris && qrisModal) {
+    btnOpenQris.addEventListener('click', () => {
+        qrisModal.classList.remove('hidden');
+        qrisModal.classList.add('flex');
+    });
+    btnCloseQris.addEventListener('click', () => {
+        qrisModal.classList.add('hidden');
+        qrisModal.classList.remove('flex');
+    });
+    qrisModal.addEventListener('click', (e) => {
+        if (e.target === qrisModal) {
+            qrisModal.classList.add('hidden');
+            qrisModal.classList.remove('flex');
+        }
+    });
+}
+
+// 7. Subtle Scroll Reveal Observer
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+revealElements.forEach(el => revealObserver.observe(el));
 
 function tick() {
     const now = new Date();
