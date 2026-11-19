@@ -28,12 +28,12 @@ const MASJID_LAT = -7.4286;
 const MASJID_LNG = 112.7214;
 
 let prayerSchedule = [
-    { id: 'card-subuh', name: 'SUBUH', hour: 3, min: 48, startMinutes: 3 * 60 + 48 },
+    { id: 'card-subuh', name: 'SUBUH', hour: 3, min: 47, startMinutes: 3 * 60 + 47 },
     { id: 'card-terbit', name: 'TERBIT', hour: 4, min: 59, startMinutes: 4 * 60 + 59 },
     { id: 'card-zuhur', name: 'ZUHUR', hour: 11, min: 16, startMinutes: 11 * 60 + 16 },
-    { id: 'card-ashar', name: 'ASHAR', hour: 14, min: 38, startMinutes: 14 * 60 + 38 },
+    { id: 'card-ashar', name: 'ASHAR', hour: 14, min: 39, startMinutes: 14 * 60 + 39 },
     { id: 'card-maghrib', name: 'MAGHRIB', hour: 17, min: 30, startMinutes: 17 * 60 + 30 },
-    { id: 'card-isya', name: 'ISYA', hour: 18, min: 44, startMinutes: 18 * 60 + 44 },
+    { id: 'card-isya', name: 'ISYA', hour: 18, min: 45, startMinutes: 18 * 60 + 45 },
 ];
 
 const inactiveCardClasses = [
@@ -49,9 +49,78 @@ const activeCardClasses = [
 ];
 
 function parseTimeStr(timeStr) {
-    const cleanStr = String(timeStr).trim().split(' ')[0].slice(0, 5);
-    const [h, m] = cleanStr.split(':').map(Number);
+    if (!timeStr) return null;
+    const match = String(timeStr).match(/(\d{1,2}):(\d{2})/);
+    if (!match) return null;
+    const h = Number(match[1]);
+    const m = Number(match[2]);
+    if (isNaN(h) || isNaN(m)) return null;
     return { hour: h, min: m, startMinutes: h * 60 + m };
+}
+
+// Ambil waktu shalat langsung berdasarkan nama properti JSON KHGT (tanpa Imsak & Dhuha)
+function extractPrayerTimes(rawObj) {
+    if (!rawObj || typeof rawObj !== 'object') return null;
+
+    // Cari objek terdalam yang menyimpan properti waktu shalat
+    let target = rawObj;
+    if (rawObj.times && typeof rawObj.times === 'object') target = rawObj.times;
+    else if (rawObj.jadwal && typeof rawObj.jadwal === 'object') target = rawObj.jadwal;
+    else if (rawObj.sholat && typeof rawObj.sholat === 'object') target = rawObj.sholat;
+
+    const sSubuh = parseTimeStr(target.subuh ?? target.fajr ?? target.Subuh ?? target.Fajr);
+    const sTerbit = parseTimeStr(target.terbit ?? target.sunrise ?? target.syuruq ?? target.Terbit ?? target.Sunrise);
+    const sZuhur = parseTimeStr(target.zuhur ?? target.dzuhur ?? target.dhuhr ?? target.Zuhur ?? target.Dzuhur);
+    const sAshar = parseTimeStr(target.ashar ?? target.asr ?? target.Ashar ?? target.Asr);
+    const sMaghrib = parseTimeStr(target.maghrib ?? target.Maghrib);
+    const sIsya = parseTimeStr(target.isya ?? target.isha ?? target.Isya ?? target.Isha);
+
+    if (sSubuh && sTerbit && sZuhur && sAshar && sMaghrib && sIsya) {
+        return [
+            { id: 'card-subuh', name: 'SUBUH', ...sSubuh },
+            { id: 'card-terbit', name: 'TERBIT', ...sTerbit },
+            { id: 'card-zuhur', name: 'ZUHUR', ...sZuhur },
+            { id: 'card-ashar', name: 'ASHAR', ...sAshar },
+            { id: 'card-maghrib', name: 'MAGHRIB', ...sMaghrib },
+            { id: 'card-isya', name: 'ISYA', ...sIsya },
+        ];
+    }
+
+    // Jika key memakai nama lain, ambil semua HH:MM lalu saring khusus 6 waktu utama (lewati Imsak & Dhuha)
+    const allTimes = [];
+    (function scan(node) {
+        if (!node) return;
+        if (typeof node === 'string') {
+            const m = node.match(/^(\d{1,2}):(\d{2})(?::\d{2})?$/);
+            if (m) allTimes.push(`${String(m[1]).padStart(2, '0')}:${m[2]}`);
+        } else if (Array.isArray(node)) {
+            node.forEach(scan);
+        } else if (typeof node === 'object') {
+            Object.values(node).forEach(scan);
+        }
+    })(target);
+
+    // Urutan 8 waktu dari server KHGT: [0:Imsak, 1:Subuh, 2:Terbit, 3:Dhuha, 4:Zuhur, 5:Ashar, 6:Maghrib, 7:Isya]
+    if (allTimes.length >= 8) {
+        const pSubuh = parseTimeStr(allTimes[1]);
+        const pTerbit = parseTimeStr(allTimes[2]);
+        const pZuhur = parseTimeStr(allTimes[4]);
+        const pAshar = parseTimeStr(allTimes[5]);
+        const pMaghrib = parseTimeStr(allTimes[6]);
+        const pIsya = parseTimeStr(allTimes[7]);
+
+        if (pSubuh && pTerbit && pZuhur && pAshar && pMaghrib && pIsya) {
+            return [
+                { id: 'card-subuh', name: 'SUBUH', ...pSubuh },
+                { id: 'card-terbit', name: 'TERBIT', ...pTerbit },
+                { id: 'card-zuhur', name: 'ZUHUR', ...pZuhur },
+                { id: 'card-ashar', name: 'ASHAR', ...pAshar },
+                { id: 'card-maghrib', name: 'MAGHRIB', ...pMaghrib },
+                { id: 'card-isya', name: 'ISYA', ...pIsya },
+            ];
+        }
+    }
+    return null;
 }
 
 function renderTimesToCards() {
@@ -74,7 +143,7 @@ function renderTimesToCards() {
     });
 }
 
-// 3. Fetch Jadwal Salat Resmi API KHGT PP Muhammadiyah + Fallback Presisi
+// 3. Fetch Jadwal Salat Resmi dari API KHGT Muhammadiyah
 async function loadJadwalMasjid() {
     const now = new Date();
     const year = now.getFullYear();
@@ -82,69 +151,35 @@ async function loadJadwalMasjid() {
     const day = String(now.getDate()).padStart(2, '0');
     const dateIso = `${year}-${month}-${day}`;
 
-    try {
-        const khgtUrl = `https://api-khgt.muhammadiyah.or.id/api/sholat?lat=${MASJID_LAT}&lon=${MASJID_LNG}&date=${dateIso}`;
-        const response = await fetch(khgtUrl);
+    const khgtEndpoint = 'https://api-khgt.muhammadiyah.or.id/api/sholat/schedule';
+    const payload = {
+        lat: MASJID_LAT,
+        lng: MASJID_LNG,
+        date: dateIso,
+        mode: "daily"
+    };
 
-        if (!response.ok) throw new Error("Fallback ke hisab lokal");
+    try {
+        const response = await fetch(khgtEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const json = await response.json();
-        const root = json.data || json;
-        const jadwal = root.jadwal || root.times || root.sholat || root;
+        const rawItem = Array.isArray(json.data) ? json.data[0] : (json.data || json);
+        const parsedSchedule = extractPrayerTimes(rawItem);
 
-        const sSubuh = parseTimeStr(jadwal.subuh || jadwal.fajr || jadwal.Subuh);
-        const sTerbit = parseTimeStr(jadwal.terbit || jadwal.sunrise || jadwal.syuruq || jadwal.Terbit);
-        const sZuhur = parseTimeStr(jadwal.zuhur || jadwal.dzuhur || jadwal.dhuhr || jadwal.Zuhur);
-        const sAshar = parseTimeStr(jadwal.ashar || jadwal.asr || jadwal.Ashar);
-        const sMaghrib = parseTimeStr(jadwal.maghrib || jadwal.Maghrib);
-        const sIsya = parseTimeStr(jadwal.isya || jadwal.isha || jadwal.Isya);
-
-        prayerSchedule = [
-            { id: 'card-subuh', name: 'SUBUH', hour: sSubuh.hour, min: sSubuh.min, startMinutes: sSubuh.startMinutes },
-            { id: 'card-terbit', name: 'TERBIT', hour: sTerbit.hour, min: sTerbit.min, startMinutes: sTerbit.startMinutes },
-            { id: 'card-zuhur', name: 'ZUHUR', hour: sZuhur.hour, min: sZuhur.min, startMinutes: sZuhur.startMinutes },
-            { id: 'card-ashar', name: 'ASHAR', hour: sAshar.hour, min: sAshar.min, startMinutes: sAshar.startMinutes },
-            { id: 'card-maghrib', name: 'MAGHRIB', hour: sMaghrib.hour, min: sMaghrib.min, startMinutes: sMaghrib.startMinutes },
-            { id: 'card-isya', name: 'ISYA', hour: sIsya.hour, min: sIsya.min, startMinutes: sIsya.startMinutes },
-        ];
-
-        const hijriObj = root.hijriah || root.khgt || root.hijri;
-        if (hijriObj) {
-            const daysShort = ['MIN', 'SEN', 'SEL', 'RAB', 'KAM', 'JUM', 'SAB'];
-            const monthsShort = ['JAN', 'FEB', 'MAR', 'APR', 'MEI', 'JUN', 'JUL', 'AGU', 'SEP', 'OKT', 'NOV', 'DES'];
-            const masehiShort = `${daysShort[now.getDay()]}, ${day} ${monthsShort[now.getMonth()]} ${year}`;
-            const teksHijri = typeof hijriObj === 'string'
-                ? hijriObj
-                : `${hijriObj.tanggal || hijriObj.day} ${hijriObj.bulan || hijriObj.month} ${hijriObj.tahun || hijriObj.year}`;
-            document.getElementById('khgt-hijri-masehi').textContent = `${teksHijri.replace(/\s*H$/i, '')} H KHGT / ${masehiShort}`;
+        if (parsedSchedule) {
+            prayerSchedule = parsedSchedule;
         }
     } catch (err) {
-        try {
-            const fallbackUrl = `https://api.aladhan.com/v1/timings/${day}-${month}-${year}?latitude=${MASJID_LAT}&longitude=${MASJID_LNG}&method=99&methodSettings=18,null,18&school=0&tune=2,2,-1,2,1,2,2,1,0`;
-            const fbRes = await fetch(fallbackUrl);
-            const fbJson = await fbRes.json();
-
-            if (fbJson.code === 200) {
-                const t = fbJson.data.timings;
-                const sSubuh = parseTimeStr(t.Fajr);
-                const sTerbit = parseTimeStr(t.Sunrise);
-                const sZuhur = parseTimeStr(t.Dhuhr);
-                const sAshar = parseTimeStr(t.Asr);
-                const sMaghrib = parseTimeStr(t.Maghrib);
-                const sIsya = parseTimeStr(t.Isha);
-
-                prayerSchedule = [
-                    { id: 'card-subuh', name: 'SUBUH', hour: sSubuh.hour, min: sSubuh.min, startMinutes: sSubuh.startMinutes },
-                    { id: 'card-terbit', name: 'TERBIT', hour: sTerbit.hour, min: sTerbit.min, startMinutes: sTerbit.startMinutes },
-                    { id: 'card-zuhur', name: 'ZUHUR', hour: sZuhur.hour, min: sZuhur.min, startMinutes: sZuhur.startMinutes },
-                    { id: 'card-ashar', name: 'ASHAR', hour: sAshar.hour, min: sAshar.min, startMinutes: sAshar.startMinutes },
-                    { id: 'card-maghrib', name: 'MAGHRIB', hour: sMaghrib.hour, min: sMaghrib.min, startMinutes: sMaghrib.startMinutes },
-                    { id: 'card-isya', name: 'ISYA', hour: sIsya.hour, min: sIsya.min, startMinutes: sIsya.startMinutes },
-                ];
-            }
-        } catch (e2) {
-            console.warn("Mode offline KHGT aktif.");
-        }
+        console.warn("Fallback aktif:", err);
     }
     renderTimesToCards();
 }
